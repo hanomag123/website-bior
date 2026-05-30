@@ -11,6 +11,7 @@
 html {
   box-sizing: border-box;
   font-size: calc(100vw / 1920 * 10);
+
   @include breakpoint($cos-bp) {
     font-size: calc(100vw / 1440 * 10);
   }
@@ -36,6 +37,15 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  font-family: var(--font-family);
+  font-size: 2rem;
+  line-height: 140%;
+  font-weight: 400;
+
+  color: var(--text--icon-primary);
+
+  background: var(--background-surface-light);
 }
 
 main {
@@ -48,9 +58,10 @@ img {
 }
 
 svg {
-  transition: fill, opacity, transform, stroke;
-  transition-duration: .3s;
+  transition: fill, opacity, transform, stroke, color, background-color;
+  transition-duration: var(--time);
   overflow: visible;
+
   width: 100%;
   height: 100%;
 }
@@ -64,33 +75,29 @@ svg {
 }
 
 .container {
-  padding-right: 4rem;
-  padding-left: 4rem;
-  @include breakpoint($cos-bp) {
-    padding-right: 5rem;
-    padding-left: 5rem;
-  }
-  @include breakpoint($xl-bp) {
-    padding-right: 2rem;
-    padding-left: 2rem;
-  }
+  padding-right: 16rem;
+  padding-left: 16rem;
+
   @include breakpoint($sm-bp) {
-    padding-right: 2.5rem;
-    padding-left: 2.5rem;
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
   }
 }
 
 .img-contain {
   display: block;
+
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
 }
+
 .img-cover {
   display: block;
   overflow: hidden;
+
   img {
     width: 100%;
     height: 100%;
@@ -98,6 +105,185 @@ svg {
   }
 }
 
+h1,
+.h1 {
+  font-family: var(--second-family);
+  font-weight: 600;
+  font-size: 3.2rem;
+  line-height: 125%;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.btn {
+  border: 1px solid var(--border-inverse);
+  border-radius: 0.8rem;
+  padding: 1.2rem 2rem;
+  background: var(--primary-cta);
+
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 125%;
+  color: var(--text--icon-primary);
+
+  font-family: var(--font-family);
+
+  transition: background-color var(--time);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.2rem;
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--primary-cta-hovered);
+    }
+  }
+
+  &.small {
+    font-size: 1.4rem;
+    line-height: 129%;
+
+    border-radius: 0.6rem;
+    padding: 1.2rem 1.6rem;
+  }
+
+  &.xl-small {
+    @include breakpoint($xl-bp) {
+      font-size: 1.4rem;
+      line-height: 129%;
+
+      border-radius: 0.6rem;
+      padding: 1.2rem 1.6rem;
+    }
+  }
+
+  &.btn-blue {
+    border: 1px solid var(--border-inverse);
+    background: var(--text--icon-secondary);
+    color: var(--text--icon-hover-primary);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: var(--text--icon-hover-secondary);
+      }
+    }
+  }
+}
+
+.link a {
+  color: var(--background-surface-blakc);
+  transition: color var(--time);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: var(--text--icon-secondary);
+    }
+  }
+}
+
+.link-blue a {
+  color: var(--text--icon-secondary);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: var(--text--icon-hover-secondary);
+    }
+  }
+}
+
+.icon-blue {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      svg {
+        background-color: var(--text--icon-hover-secondary)
+      }
+    }
+  }
+
+  svg {
+    background: var(--text--icon-secondary);
+    border-radius: 100%;
+    color: var(--background-surface-light);
+  }
+}
+
+.body-1,
+.body-2,
+.body-3 {
+  font-family: var(--font-family);
+  font-weight: 500;
+}
+
+.body-1 {
+
+  font-size: 1.8rem;
+  line-height: 133%;
+}
+
+.body-2 {
+  font-size: 1.6rem;
+  line-height: 125%;
+}
+
+.body-3 {
+  font-size: 1.4rem;
+  line-height: 129%;
+}
+
+.font-regular {
+  font-weight: 400;
+}
+
+.custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+    height: 0.4rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--background-back);
+    border-radius: 0.6rem;
+    padding: 1px;
+
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--text--icon-secondary);
+    border-radius: 0.6rem;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
+
+.dropdown-style {
+  border: 1px solid var(--text--icon-secondary);
+  border-radius: 1.2rem;
+
+  box-shadow: 0 4px 12px 0 rgba(146, 146, 146, 0.01);
+  background: var(--background-surface-light);
+
+  animation: fadeEffect var(--time);
+
+  width: 100%;
+}
 
 /* Blocks */
 

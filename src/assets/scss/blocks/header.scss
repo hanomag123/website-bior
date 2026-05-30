@@ -1,16 +1,112 @@
 .header {
-  position: fixed;
+  position: sticky;
   width: 100%;
-  transition: transform .3s;
+  transition: transform var(--time);
   will-change: transform;
   top: 0;
   left: 0;
   z-index: 20;
 
-  @include breakpoint($xl-bp) {
-  }
+  background: var(--background-surface-light);
+
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--border-inverse);
+
+  @include breakpoint($xl-bp) {}
 }
 
 .out {
   transform: translate3d(0, calc(-100% - 1rem), 0);
+}
+
+.header-logo {
+  width: 28rem;
+  height: 6.4rem;
+
+  margin-bottom: auto;
+  transition: opacity var(--time);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  margin-left: auto;
+}
+
+.header-phone {}
+
+.header-lk {
+  svg {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+}
+
+.header-btns {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  &::before {
+    content: '';
+    background: var(--border-inverse);
+    width: 0.1rem;
+    height: 4.8rem;
+    margin-right: 1.2rem;
+    margin-left: 2.4rem;
+
+    display: inline-block;
+  }
+}
+
+.header-btn {}
+
+.header-socials {
+  color: var(--1);
+
+  position: relative;
+
+  padding-left: 4.9rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  &::before {
+    content: '';
+    background: var(--border-inverse);
+    width: 0.1rem;
+    height: 4.8rem;
+    margin-right: 1.2rem;
+    margin-left: 2.4rem;
+
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+  }
+
+  a {
+    width: 2.4rem;
+    height: 2.4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

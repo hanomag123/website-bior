@@ -1,27 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  const xl = matchMedia('(max-width: 1024px)');
+  const xl = matchMedia("(max-width: 1024px)");
 
   class Menu {
     constructor(menuElement, buttonElement) {
-      this.menu = typeof menuElement === "string" ? document.querySelector(menuElement) : menuElement;
-      this.button = typeof buttonElement === "string" ? document.querySelector(buttonElement) : buttonElement;
-      this.overlay = document.createElement('div');
+      this.menu =
+        typeof menuElement === "string"
+          ? document.querySelector(menuElement)
+          : menuElement;
+      this.button =
+        typeof buttonElement === "string"
+          ? document.querySelector(buttonElement)
+          : buttonElement;
+      this.overlay = document.createElement("div");
       this.overlay.hidden = true;
       this._init();
     }
 
     _init() {
       document.body.appendChild(this.overlay);
-      this.overlay.classList.add('overlay');
+      this.overlay.classList.add("overlay");
 
-      this.overlay.addEventListener('click', this.toggleMenu.bind(this));
-      this.button.addEventListener('click', this.toggleMenu.bind(this));
+      this.overlay.addEventListener("click", this.toggleMenu.bind(this));
+      this.button.addEventListener("click", this.toggleMenu.bind(this));
     }
 
     toggleMenu() {
-      this.menu.classList.toggle('menu--open');
-      this.button.classList.toggle('menu-button--active');
+      this.menu.classList.toggle("menu--open");
+      this.button.classList.toggle("menu-button--active");
       this.overlay.hidden = !this.overlay.hidden;
 
       if (this.isMenuOpen()) {
@@ -32,41 +37,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     closeMenu() {
-      this.menu.classList.remove('header__nav--active');
-      this.button.classList.remove('header__menu-button--active');
+      this.menu.classList.remove("header__nav--active");
+      this.button.classList.remove("header__menu-button--active");
       this.overlay.hidden = true;
 
       this.enableScroll();
     }
 
     isMenuOpen() {
-      return this.menu.classList.contains('menu--open');
+      return this.menu.classList.contains("menu--open");
     }
 
     disableScroll() {
-        // Get the current page scroll position;
-        const scrollTop = window.pageYOffset  || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset  || document.documentElement.scrollLeft;
-      
-            // if any scroll is attempted, set this to the previous value;
-            window.onscroll = function() {
-                window.scrollTo(scrollLeft, scrollTop);
-            };
+      // Get the current page scroll position;
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const scrollLeft =
+        window.pageXOffset || document.documentElement.scrollLeft;
+
+      // if any scroll is attempted, set this to the previous value;
+      window.onscroll = function () {
+        window.scrollTo(scrollLeft, scrollTop);
+      };
     }
 
     enableScroll() {
-      window.onscroll = function() {};
+      window.onscroll = function () {};
     }
   }
 
-  const menu = document.querySelector('.menu');
-  const menuButton = document.querySelector('.menu-button');
+  const menu = document.querySelector(".menu");
+  const menuButton = document.querySelector(".menu-button");
 
   if (menu && menuButton) {
     new Menu(menu, menuButton);
   }
 
-  const header = document.querySelector('header');
+  const header = document.querySelector("header");
 
   let handler;
 
@@ -75,28 +82,28 @@ document.addEventListener("DOMContentLoaded", () => {
     handler = throttle(function (event) {
       scrollHeader();
     }, 500);
-    document.addEventListener('scroll', handler, false);
+    document.addEventListener("scroll", handler, false);
   }
 
   function scrollRemove() {
     /* ... */
-    document.removeEventListener('scroll', handler, false);
+    document.removeEventListener("scroll", handler, false);
   }
 
   if (xl.matches) {
     scrollAdd();
-    document.removeEventListener('scroll', scrollHeader);
+    document.removeEventListener("scroll", scrollHeader);
   } else {
-    document.addEventListener('scroll', scrollHeader);
+    document.addEventListener("scroll", scrollHeader);
     scrollRemove();
   }
 
-  xl.addEventListener('change', () => {
+  xl.addEventListener("change", () => {
     if (xl.matches) {
-      document.removeEventListener('scroll', scrollHeader);
+      document.removeEventListener("scroll", scrollHeader);
       scrollAdd();
     } else {
-      document.addEventListener('scroll', scrollHeader);
+      document.addEventListener("scroll", scrollHeader);
       scrollRemove();
     }
   });
@@ -104,8 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function disableScroll() {
     // Get the current page scroll position;
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-    document.documentElement.style.setProperty('scroll-behavior', 'auto');
+    const scrollLeft =
+      window.pageXOffset || document.documentElement.scrollLeft;
+    document.documentElement.style.setProperty("scroll-behavior", "auto");
 
     // if any scroll is attempted, set this to the previous value;
     window.onscroll = function () {
@@ -114,42 +122,51 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function enableScroll() {
-    document.documentElement.style.setProperty('scroll-behavior', null);
-    window.onscroll = function () { };
+    document.documentElement.style.setProperty("scroll-behavior", null);
+    window.onscroll = function () {};
   }
 
-  var prevScrollpos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+  var prevScrollpos =
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop;
   function scrollHeader() {
-    var currentScrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    var currentScrollPos =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
     if (currentScrollPos < 0) {
       currentScrollPos = 0;
       prevScrollpos = 0;
-    };
+    }
     if (prevScrollpos < 0) {
       prevScrollpos = 0;
       currentScrollPos = 0;
-    };
+    }
     const num = xl.matches ? 50 : 100;
     if (currentScrollPos > num) {
-      header.classList.add('header--active');
+      header.classList.add("header--active");
     } else {
-      header.classList.remove('header--active');
-    };
+      header.classList.remove("header--active");
+    }
     if (prevScrollpos >= currentScrollPos) {
-      header.classList.remove('out');
+      header.classList.remove("out");
     } else {
-      header.classList.add('out');
-    };
+      header.classList.add("out");
+    }
     prevScrollpos = currentScrollPos;
-  };
+  }
 
   function initHeader() {
-    var currentScrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    var currentScrollPos =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
     const num = xl.matches ? 50 : 150;
     if (currentScrollPos > num) {
-      header.classList.add('header--active');
+      header.classList.add("header--active");
     } else {
-      header.classList.remove('header--active');
+      header.classList.remove("header--active");
     }
   }
 
@@ -161,8 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
       savedThis;
 
     function wrapper() {
-
-      if (isThrottled) { // (2);
+      if (isThrottled) {
+        // (2);
         savedArgs = arguments;
         savedThis = this;
         return;
@@ -183,15 +200,125 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return wrapper;
   }
+
+  const change = new Event("change", { bubbles: true });
+  const wrapper = document.querySelector(".main-search");
+
+  const dropdownbtn = document.querySelector(".dropdown-btn");
+  if (dropdownbtn && wrapper) {
+    dropdownbtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      this.classList.toggle("opened");
+      wrapper.classList.toggle("focused");
+    });
+
+    document.addEventListener("click", function () {
+      if (!event.target.closest(".dropdown-items")) {
+        dropdownbtn.classList.remove("opened");
+
+        dropdownbtn.dispatchEvent(change);
+        wrapper.classList.remove("focused");
+      }
+    });
+  }
+
+  const checkboxes = document.querySelectorAll(
+    '.js-checkboxes .checkbox-label input[type="checkbox"]',
+  );
+  const chips = document.querySelector(".js-chips");
+  if (checkboxes.length && chips && wrapper) {
+    checkboxes.forEach((el) => {
+      const chip = el.parentElement.querySelector(".js-chip");
+      chip.addEventListener("click", function () {
+        this.hidden = true;
+        el.checked = false;
+      });
+      chips.appendChild(chip);
+      el.addEventListener("change", function () {
+        chip.hidden = !this.checked;
+
+        const isAnyChecked = [...checkboxes].some((el) => el.checked);
+
+        wrapper.classList.toggle("has-level", isAnyChecked);
+      });
+    });
+  }
+
+  function debounce(func, delay) {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func.apply(this, args), delay);
+    };
+  }
+
+  const search = document.querySelector(".js-search");
+  if (search && wrapper) {
+    const debouncedInputHandler = debounce(function () {
+      if (search.value.length > 3) {
+        search.dispatchEvent(change);
+
+        wrapper.classList.add("has-text");
+      }
+
+      if (search.value.length === 0) {
+        search.dispatchEvent(change);
+
+        wrapper.classList.remove("has-text");
+      }
+    }, 300);
+
+    search.addEventListener("input", debouncedInputHandler);
+  }
+
+  const reset = document.querySelector(".js-reset");
+  if (reset && search && checkboxes && chips) {
+    reset.addEventListener("click", function () {
+      search.value = "";
+      wrapper.classList.remove("has-text");
+      wrapper.classList.remove("has-level");
+
+      const innerchips = chips.querySelectorAll(".js-chip");
+      if (innerchips.length) {
+        innerchips.forEach((el) => (el.hidden = true));
+      }
+
+      checkboxes.forEach((el) => {
+        el.checked = false;
+      });
+
+      search.dispatchEvent(change);
+    });
+  }
+
+  const catalogbtn = document.querySelector(".main-catalogbtn");
+  const catalog = document.querySelector(".main-catalog");
+  if (catalogbtn && catalog) {
+    catalogbtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      this.classList.toggle("opened");
+      catalog.classList.toggle("opened");
+    });
+
+    document.addEventListener("click", function () {
+      if (!event.target.closest(".main-catalog")) {
+        catalogbtn.classList.remove("opened");
+        catalog.classList.remove("opened");
+      }
+    });
+  }
+
+  const summaries = document.querySelectorAll('.main-summary')
+  const tabcontent = document.querySelector('.main-tabcontent')
+  if (summaries.length && tabcontent) {
+    summaries.forEach(el => {
+      el.addEventListener('click', function () {
+        summaries.forEach(el => el.classList.remove('active'))
+        this.classList.add('active')
+        tabcontent.innerHTML = this.nextElementSibling.innerHTML
+      })
+    })
+
+    summaries[0].click()
+  }
 });
-
-
-
-
-
-
-
-
-
-
-

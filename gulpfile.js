@@ -98,7 +98,7 @@ function sprites() {
       },
     }
     ))
-    .pipe(replace(new RegExp('stroke=".*?"|fill=".*?"|opacity=".*?"', 'g'), ''))
+    .pipe(replace(/\b(stroke|fill|opacity)="(?!currentColor|none").*?"/g, ''))
     .pipe(dest(path.build.sprites))
     .pipe(browserSync.stream())
 }

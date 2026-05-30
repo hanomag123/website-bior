@@ -1,11 +1,61 @@
-<header class="header">
+<header class="header container">
+
+  <a href="main.html" class="header-logo img-contain">
+    <picture>
+      <source srcset="./assets/images/logo/logo-mobile.svg" media="(max-width:500px)">
+      <img src="./assets/images/logo/logo.svg" fetchpriority="high" alt="logo">
+    </picture>
+  </a>
+
   {{> menu}}
 
-  <button class="menu-button myclass">
+  <ul class="header-info link link-blue body-3">
+    <li><a href="tel:+74995844424" class="header-phone">+7 (499) 584-44-24</a></li>
+    <li>
+      <a href="#" class="header-lk icon-blue">
+        Личный кабинет
+        <svg>
+          <use xlink:href='./assets/images/sprite.svg#user'></use>
+        </svg>
+      </a>
+    </li>
+  </ul>
+
+  <div class="header-btns">
+    <button class="header-btn btn xl-small">
+      Оставить заявку
+    </button>
+  </div>
+
+  <ul class="header-socials">
+    <li class="icon-blue">
+      <a href="#" aria-label="max">
+        <svg>
+          <use xlink:href='./assets/images/sprite.svg#max'></use>
+        </svg>
+      </a>
+    </li>
+    <li class="icon-blue">
+      <a href="#" aria-label="telegram">
+        <svg>
+          <use xlink:href='./assets/images/sprite.svg#telegram'></use>
+        </svg>
+      </a>
+    </li>
+    <li class="icon-blue">
+      <a href="#" aria-label="vk">
+        <svg>
+          <use xlink:href='./assets/images/sprite.svg#vk'></use>
+        </svg>
+      </a>
+    </li>
+  </ul>
+
+  <button class="menu-button" aria-label="open menu">
     <span class="burger-button-close">
       <span id="first-line-burger"></span>
       <span id="second-line-burger"></span>
       <span id="third-line-burger"></span>
-  </span>
+    </span>
   </button>
 </header>
