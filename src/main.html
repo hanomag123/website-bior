@@ -417,4 +417,84 @@ title: Главная
       <!-- Chips -->
     </form>
   </div>
+
+  <hr class="mt-64 mb-64">
+
+  <h2 class="main-subtitle h2 shevron-title">Почему через УМНЕЙ, а не напрямую в вуз?</h2>
+
+  <ul class="main-ctas mt-52">
+    <li class="main-cta first">
+      <h3 class="main-h3 h5">Платформа для <br>обучения умней</h3>
+
+      <a href="https://www.youtube.com/watch?v=927eacQO-T8" data-fancybox class="btn btn-black">Смотреть <svg>
+          <use xlink:href='./assets/images/sprite.svg#video'></use>
+        </svg></a>
+    </li>
+    <li class="main-cta second">
+      <h3 class="main-h3 h5">Получить персональную карту развития</h3>
+
+      <button class="btn">Заполнить&nbsp;анкету</button>
+    </li>
+
+    <li>
+      <a href="#" class="main-card card body-1">
+        <span>Заказать обратный звонок</span>
+        <svg>
+          <use xlink:href='./assets/images/sprite.svg#phone'></use>
+        </svg>
+      </a>
+    </li>
+  </ul>
+
+  <div class="main-swiperwrap mt-20">
+    <div class="swiper main-swiper">
+      <div class="swiper-wrapper">
+        @loop('./partials/main-item.html', [
+        {
+        title: "Вопросы <br>и ответы",
+        link: "faq.html",
+        bg: "1.svg",
+        },
+        {
+        title: "Оплата материнским капиталом",
+        link: "article.html",
+        bg: "2.svg",
+        },
+        {
+        title: "Образовательный <br>кредит",
+        link: "article.html",
+        bg: "3.svg",
+        },
+        {
+        title: "Как проверить лицензию и аккредитацию",
+        link: "article.html",
+        bg: "4.svg",
+        },
+        {
+        title: "Отсрочка от армии",
+        link: "article.html",
+        bg: "5.svg",
+        },
+        {
+        title: "Вопросы <br>и ответы",
+        link: "faq.html",
+        bg: "1.svg",
+        },
+        ])
+      </div>
+    </div>
+
+    <div class="swiper-pagination"></div>
+
+    <button class="swiper-arrow next">
+      <svg>
+        <use xlink:href='./assets/images/sprite.svg#arrow'></use>
+      </svg>
+    </button>
+    <button class="swiper-arrow prev">
+      <svg>
+        <use xlink:href='./assets/images/sprite.svg#arrow'></use>
+      </svg>
+    </button>
+  </div>
 </section>

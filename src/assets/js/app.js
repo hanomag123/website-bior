@@ -321,4 +321,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     summaries[0].click()
   }
+
+  const mainswipers = document.querySelectorAll('.main-swiperwrap')
+  if (mainswipers.length) {
+    mainswipers.forEach(el => {
+      const nextEl = el.querySelector('.next')
+      const prevEl = el.querySelector('.prev')
+      const pagination = el.querySelector('.swiper-pagination')
+      const swiper = el.querySelector('.swiper')
+      if (!swiper) {
+        return;
+      }
+      new Swiper(swiper, {
+        slidesPerView: 'auto',
+        pagination: {
+          el: pagination
+        },
+        navigation: {
+          prevEl,
+          nextEl
+        }
+      })
+    })
+  }
 });
