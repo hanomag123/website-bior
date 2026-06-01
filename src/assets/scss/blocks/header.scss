@@ -45,6 +45,10 @@
   gap: 0.6rem;
 
   margin-left: auto;
+
+  @include breakpoint($xl-bp) {
+    display: none;
+  }
 }
 
 .header-phone {}
@@ -85,6 +89,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+
+  @include breakpoint($xl-bp) {
+    display: none;
+  }
 
   &::before {
     content: '';

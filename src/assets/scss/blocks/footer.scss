@@ -1,0 +1,95 @@
+.footer {
+  background-image: url("data:image/svg+xml,%3Csvg width='1920' height='616' viewBox='0 0 1920 616' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1920' height='616' fill='%231E447E'/%3E%3Crect width='1920' height='616' fill='url(%23paint0_linear_229_8681)' fill-opacity='0.2'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_229_8681' x1='18.6499' y1='2.57949e-05' x2='1540.39' y2='1110.59' gradientUnits='userSpaceOnUse'%3E%3Cstop/%3E%3Cstop offset='1' stop-color='white'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  display: grid;
+  grid-template-columns: 33rem 1fr;
+
+  @include breakpoint($xl-bp) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.footer-logo {
+  width: 100%;
+  height: 7.6rem;
+  transition: opacity var(--time);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.footer-btn {
+  width: fit-content;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+
+  &>* {
+    a {
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+
+      background: var(--background-surface-light);
+      border-radius: 100%;
+      color: var(--text--icon-secondary);
+      transition: background-color var(--time);
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: var(--background-back);
+        }
+      }
+    }
+  }
+}
+
+.footer-nav {
+  columns: 2;
+  margin-left: auto;
+  gap: 8rem;
+
+  @include breakpoint($xl-bp) {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &>* {
+    margin-bottom: 1.6rem;
+  }
+
+  a {
+    transition: color var(--time);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--background-back);
+      }
+    }
+  }
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--background-surface-light---hover);
+  padding-top: 3.2rem;
+  margin-top: 3.2rem;
+  width: 100%;
+  grid-column: 2 span;
+}

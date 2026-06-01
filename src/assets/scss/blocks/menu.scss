@@ -1,5 +1,9 @@
 .menu {
   flex-grow: 1;
+
+  @include breakpoint($xl-bp) {
+    display: none;
+  }
 }
 
 .menu--open {
