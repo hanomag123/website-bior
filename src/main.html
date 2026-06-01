@@ -4,7 +4,11 @@ title: Главная
 ---
 
 <section class="main container">
-  <h1 class="main-title h1">
+  <div class="main-mainbg img-cover">
+    <img src="./assets/images/main/bg.webp" fetchpriority="high" alt="bg">
+  </div>
+
+  <h1 class="main-title h1 relative">
     ПРИГЛАШАЕМ ДИСТАНЦИОННО ПОЛУЧИТЬ СРЕДНЕЕ ИЛИ ВЫСШЕЕ ОБРАЗОВАНИЕ НА УДОБНОЙ ПЛАТФОРМЕ УМНЕЙ
   </h1>
 
@@ -418,11 +422,11 @@ title: Главная
     </form>
   </div>
 
-  <hr class="mt-64 mb-64">
+  <hr class="mt-64 mb-64 relative">
 
-  <h2 class="main-subtitle h2 shevron-title">Почему через УМНЕЙ, а не напрямую в вуз?</h2>
+  <h2 class="main-subtitle h2 shevron-title relative">Почему через УМНЕЙ, а не напрямую в вуз?</h2>
 
-  <ul class="main-ctas mt-52">
+  <ul class="main-ctas mt-52 relative">
     <li class="main-cta first">
       <h3 class="main-h3 h5">Платформа для <br>обучения умней</h3>
 
@@ -446,7 +450,7 @@ title: Главная
     </li>
   </ul>
 
-  <div class="main-swiperwrap mt-20">
+  <div class="main-swiperwrap mt-20 relative">
     <div class="swiper main-swiper">
       <div class="swiper-wrapper">
         @loop('./partials/main-item.html', [
@@ -491,10 +495,386 @@ title: Главная
         <use xlink:href='./assets/images/sprite.svg#arrow'></use>
       </svg>
     </button>
+
     <button class="swiper-arrow prev">
       <svg>
         <use xlink:href='./assets/images/sprite.svg#arrow'></use>
       </svg>
     </button>
+  </div>
+</section>
+
+<section class="mwhat mt-80 container">
+  <hr class="relative">
+
+  <h2 class="mt-48 mwhat-title section-title body-2 text-blue relative">Что такое Умней</h2>
+
+  <div class="mwhat-columns mt-48 relative">
+    <a href="https://www.youtube.com/watch?v=927eacQO-T8" data-fancybox class="mwhat-video">
+      <div class="img-cover">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/mwhat/preview.jpg" class="lazyload" alt="preview">
+      </div>
+    </a>
+
+    <div class="mwhat-text">
+      <h3 class="h2 text-center mwhat-subtitle">Умней удобно!</h3>
+      <h4 class="h5 text-center mt-16 mwhat-desc">Обучение с УМНЕЙ проходит с помощью электронных видов занятий по востребованным направлениям подготовки различных уровней обучения. Все, что тебе понадобится – это компьютер или гаджет с доступом в Интернет</h4>
+    </div>
+  </div>
+
+  <hr class="relative mt-48">
+</section>
+
+<section class="education mt-96 pb-80 container">
+  <h2 class="education-title h2 shevron-title relative">Какое образование я получу после окончания? </h2>
+
+  <hr class="relative mt-35">
+
+  <h3 class="education-subtitle h2 text-center mt-80">Преимущества обучения с умней</h3>
+
+  <ul class="education-list mt-48">
+    <li class="education-item --1">
+      <h4 class="education-subtitle h4">УДОБНАЯ ПЛАТФОРМА</h4>
+      <p class="education-desc body-1 font-regular mt-16">
+        Наслаждайтесь обучением в удобном онлайн-формате, получая доступ к учебным материалам, заданиям и поддержке опытного наставника.
+      </p>
+
+      <div class="education-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/logo/logo-mobile.svg" class="lazyload" alt="logo">
+      </div>
+    </li>
+    <li class="education-item --2">
+      <h4 class="education-subtitle h4">ПЕРСОНАЛЬНО</h4>
+      <p class="education-desc body-1 font-regular mt-16">
+        Учитесь в удобное время с личным планом обучения, разработанным специально для вас, и получайте обратную связь от опытных преподавателей.
+      </p>
+    </li>
+    <li class="education-item --3 bg-blue">
+      <h4 class="education-subtitle h4">ВЫГОДНО</h4>
+      <p class="education-desc body-1 font-regular mt-16">
+        Мы предлагаем гибкую систему скидок и акций, чтобы сделать образование доступным <br>каждому, кто стремится к знаниям и развитию.
+      </p>
+    </li>
+    <li class="education-item --4 bg-blue">
+      <h4 class="education-subtitle h4">ПОМОЩЬ В ТРУДОУСТРОЙСТВЕ</h4>
+      <p class="education-desc body-1 font-regular mt-16">
+        Получите необходимые навыки для успешного трудоустройства. Наша платформа предлагает актуальные знания, практические задания и помощь в составлении резюме.
+      </p>
+
+      <div class="education-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/4.svg" class="lazyload" alt="logo">
+      </div>
+    </li>
+    <li class="education-item --5">
+      <h4 class="education-subtitle h4">ПОДДЕРЖКА КУРАТОРА</h4>
+      <p class="education-desc body-1 font-regular mt-16">
+        Получите личного куратора, готового помочь в любое время. Доступ к эксклюзивным материалам и консультациям для успешной учебы.
+      </p>
+    </li>
+  </ul>
+</section>
+
+<section class="mhow pt-80 pb-160">
+  <h2 class="mhow-title h2 text-center container">Как учиться?</h2>
+
+  <ol class="mhow-list container mt-48">
+    <li class="mhow-item">
+      <h3 class="mhow-subtitle body-1">Подай документы и дождись<br> приказа о зачислении</h3>
+
+      <div class="mhow-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/1.webp" class="lazyload" alt="education">
+      </div>
+    </li>
+    <li class="mhow-item">
+      <h3 class="mhow-subtitle body-1">Получи доступ к занятием</h3>
+
+      <div class="mhow-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/2.webp" class="lazyload" alt="education">
+      </div>
+    </li>
+    <li class="mhow-item">
+      <h3 class="mhow-subtitle body-1">Изучи инструкцию как<br> работать на платформе</h3>
+
+      <div class="mhow-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/3.webp" class="lazyload" alt="education">
+      </div>
+    </li>
+    <li class="mhow-item">
+      <h3 class="mhow-subtitle body-1">Учись и<br>получай оценки</h3>
+
+      <div class="mhow-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/4.webp" class="lazyload" alt="education">
+      </div>
+    </li>
+    <li class="mhow-item">
+      <h3 class="mhow-subtitle body-1">Закрывай <br>вовремя ссесию</h3>
+
+      <div class="mhow-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/5.webp" class="lazyload" alt="education">
+      </div>
+    </li>
+    <li class="mhow-item">
+      <h3 class="mhow-subtitle body-1">Заказывай справку <br>на учебный отпуск</h3>
+
+      <div class="mhow-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/6.webp" class="lazyload" alt="education">
+      </div>
+    </li>
+    <li class="mhow-item">
+      <h3 class="mhow-subtitle body-1">Проходи <br>практику</h3>
+
+      <div class="mhow-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/7.webp" class="lazyload" alt="education">
+      </div>
+    </li>
+    <li class="mhow-item">
+      <h3 class="mhow-subtitle body-1">Появился вопрос – пиши <br>в техническую поддержку</h3>
+
+      <div class="mhow-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/8.webp" class="lazyload" alt="education">
+      </div>
+    </li>
+    <li class="mhow-item">
+      <h3 class="mhow-subtitle body-1">Плохая оценка –<br> пересдай!</h3>
+
+      <div class="mhow-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/9.webp" class="lazyload" alt="education">
+      </div>
+    </li>
+    <li class="mhow-item">
+      <h3 class="mhow-subtitle body-1">Конспектируй <br>пройденный материал</h3>
+
+      <div class="mhow-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/10.webp" class="lazyload" alt="education">
+      </div>
+    </li>
+    <li class="mhow-item">
+      <h3 class="mhow-subtitle body-1">Подготовься<br> к ГИА!</h3>
+
+      <div class="mhow-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/11.webp" class="lazyload" alt="education">
+      </div>
+    </li>
+    <li class="mhow-item">
+      <h3 class="mhow-subtitle body-1">Получи диплом!</h3>
+
+      <div class="mhow-bg img-contain">
+        <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/education/12.webp" class="lazyload" alt="education">
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section class="mdocuments pt-80 pb-80 container">
+  <h2 class="mdocuments-title h2 text-center">Документы</h2>
+
+  <ul class="mdocuments-list mt-48 body-1">
+    <li>
+      <a href="#" class="mdocuments-item">
+        <div class="mdocuments-icon img-contain">
+          <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/documents/pdf.svg" class="lazyload" alt="pdf">
+        </div>
+
+        Количество мест для приема в 2026 - 2027 учебном году по специальностям/профессии
+      </a>
+    </li>
+    <li>
+      <a href="#" class="mdocuments-item">
+        <div class="mdocuments-icon img-contain">
+          <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/documents/pdf.svg" class="lazyload" alt="pdf">
+        </div>
+        Положение о приемной комиссии на 2024-2025 учебный год
+      </a>
+    </li>
+    <li>
+      <a href="#" class="mdocuments-item">
+        <div class="mdocuments-icon img-contain">
+          <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/documents/pdf.svg" class="lazyload" alt="pdf">
+        </div>
+        Правила приема на обучение по программам бакалавриата
+      </a>
+    </li>
+    <li>
+      <a href="#" class="mdocuments-item">
+        <div class="mdocuments-icon img-contain">
+          <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/documents/pdf.svg" class="lazyload" alt="pdf">
+        </div>
+        Информация о сроках проведения приема документов
+      </a>
+    </li>
+    <li>
+      <a href="#" class="mdocuments-item">
+        <div class="mdocuments-icon img-contain">
+          <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/documents/pdf.svg" class="lazyload" alt="pdf">
+        </div>
+        Доступные места на 2025-2026 уч. год
+      </a>
+    </li>
+    <li>
+      <a href="#" class="mdocuments-item">
+        <div class="mdocuments-icon img-contain">
+          <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/documents/pdf.svg" class="lazyload" alt="pdf">
+        </div>
+        Приказ о работе приемной комиссии
+      </a>
+    </li>
+    <li>
+      <a href="#" class="mdocuments-item">
+        <div class="mdocuments-icon img-contain">
+          <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/documents/pdf.svg" class="lazyload" alt="pdf">
+        </div>
+        Условия поступления в магистратуру
+      </a>
+    </li>
+    <li>
+      <a href="#" class="mdocuments-item">
+        <div class="mdocuments-icon img-contain">
+          <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/documents/pdf.svg" class="lazyload" alt="pdf">
+        </div>
+        Сроки подачи документов
+      </a>
+    </li>
+  </ul>
+
+  <div class="mdocuments-bottom mt-48">
+    <a href="article.html" class="mdocuments-btn body-1">
+      Все документы
+      <svg>
+        <use xlink:href='./assets/images/sprite.svg#arr'></use>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<section class="mdirection pt-80 pb-80 container bg-grey">
+  <h2 class="mdirection-title h2 text-center">Траектория развития профессиональных<br> компетенций</h2>
+
+  <div class="mdirection-block mt-48 relative">
+    <div class="mdirection-inner relative">
+      <h3 class="mdirection-subtitle h4 text-white">Планирование личного профессионального развития — залог успешной карьеры. Делай это сейчас!</h3>
+
+      <a href="development.html" class="mdirection-btn btn btn-white mt-40">Узнать подробнее</a>
+    </div>
+
+    <div class="mdirection-bg img-cover">
+      <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/mdirection/banner.jpg" class="lazyload" alt="mdirection">
+    </div>
+  </div>
+</section>
+
+<section class="support pt-80 pb-80 container">
+  <h2 class="support-title h2 text-center">Осуществляем поддержку <br>трудоустройства</h2>
+
+  <div class="mdirection-block mt-48 relative">
+    <div class="mdirection-inner relative">
+      <h3 class="mdirection-subtitle h4 text-white">Осуществляем поддержку <br>трудоустройства</h3>
+
+      <ul class="support-list text-white body-1 mt-32">
+        <li>
+          Учим писать резюме
+        </li>
+        <li>
+          Публикуем вакансии
+        </li>
+        <li>
+          Знакомим с работодателями
+        </li>
+      </ul>
+
+      <a href="development.html" class="mdirection-btn btn btn-white mt-40">Узнать подробнее</a>
+    </div>
+
+    <div class="mdirection-bg img-cover">
+      <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/mdirection/banner-2.jpg" class="lazyload" alt="mdirection">
+    </div>
+  </div>
+</section>
+
+<section class="gallery pb-80">
+  <div class="gallery-head container">
+    <hr>
+    <h2 class="mt-48 mwhat-title section-title body-2 text-blue relative">Фотогалерея</h2>
+  </div>
+
+  <div class="gallery-wrap">
+    <div class="swiper gallery-swiper container mt-48">
+      <div class="swiper-wrapper">
+        <a href="./assets/images/gallery/1.jpg" data-fancybox="gallery" class="swiper-slide img-cover">
+          <img src="./assets/images/gallery/1.jpg" loading="lazy" alt="gallery">
+        </a>
+        <a href="./assets/images/gallery/2.jpg" data-fancybox="gallery" class="swiper-slide img-cover">
+          <img src="./assets/images/gallery/2.jpg" loading="lazy" alt="gallery">
+        </a>
+        <a href="./assets/images/gallery/3.jpg" data-fancybox="gallery" class="swiper-slide img-cover">
+          <img src="./assets/images/gallery/3.jpg" loading="lazy" alt="gallery">
+        </a>
+        <a href="./assets/images/gallery/4.jpg" data-fancybox="gallery" class="swiper-slide img-cover">
+          <img src="./assets/images/gallery/4.jpg" loading="lazy" alt="gallery">
+        </a>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <button class="swiper-arrow next white">
+      <svg>
+        <use xlink:href='./assets/images/sprite.svg#arrow'></use>
+      </svg>
+    </button>
+
+    <button class="swiper-arrow prev white">
+      <svg>
+        <use xlink:href='./assets/images/sprite.svg#arrow'></use>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<section class="mcontacts mhow pt-80">
+  <h2 class="mcontacts-title h2 text-center container">Контакты</h2>
+
+  <div class="mcontacts-block">
+    <div class="mcontacts-item">
+      <a href="tel:+74995844424" class="mcontacts-phone h4">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M24.3217 17.3313L19.1691 15.0224L19.1549 15.0159C18.8874 14.9015 18.5956 14.8555 18.3058 14.8823C18.0161 14.909 17.7377 15.0076 17.4956 15.169C17.4671 15.1878 17.4397 15.2083 17.4136 15.2302L14.7514 17.4998C13.0649 16.6806 11.3236 14.9524 10.5044 13.2877L12.7772 10.5851C12.7991 10.5577 12.8199 10.5304 12.8395 10.5009C12.9975 10.2595 13.0934 9.98279 13.1185 9.69541C13.1437 9.40802 13.0975 9.11887 12.9839 8.85368V8.84056L10.6684 3.67915C10.5183 3.33272 10.2602 3.04414 9.93256 2.85648C9.60494 2.66882 9.22541 2.59214 8.85063 2.6379C7.36857 2.83293 6.00817 3.56078 5.02353 4.68551C4.03889 5.81024 3.49733 7.25494 3.50001 8.74978C3.50001 17.4342 10.5656 24.4998 19.25 24.4998C20.7448 24.5025 22.1895 23.9609 23.3143 22.9763C24.439 21.9916 25.1669 20.6312 25.3619 19.1492C25.4077 18.7745 25.3312 18.3951 25.1438 18.0675C24.9563 17.7399 24.668 17.4816 24.3217 17.3313ZM19.25 22.7498C15.5382 22.7457 11.9796 21.2694 9.35499 18.6448C6.73036 16.0202 5.25406 12.4616 5.25001 8.74978C5.24589 7.68172 5.63069 6.64868 6.33253 5.84358C7.03438 5.03849 8.00528 4.51638 9.06392 4.37478C9.06348 4.37914 9.06348 4.38354 9.06392 4.3879L11.3608 9.52853L9.10001 12.2345C9.07706 12.2609 9.05622 12.289 9.03767 12.3187C8.87307 12.5713 8.77652 12.8621 8.75735 13.1629C8.73819 13.4638 8.79707 13.7645 8.92829 14.0359C9.91923 16.0626 11.9613 18.0893 14.0099 19.0792C14.2833 19.2091 14.5857 19.266 14.8876 19.2441C15.1896 19.2223 15.4807 19.1225 15.7325 18.9545C15.7606 18.9355 15.7876 18.9151 15.8134 18.8932L18.4724 16.6248L23.613 18.9271C23.613 18.9271 23.6217 18.9271 23.625 18.9271C23.4851 19.9873 22.9638 20.9601 22.1586 21.6637C21.3533 22.3673 20.3193 22.7534 19.25 22.7498Z"
+            fill="#535353" />
+        </svg>
+        +7 (499) 584-44-24
+      </a>
+
+      <ul class="mcontacts-socials">
+        <li class="icon-blue">
+          <a href="#" aria-label="max">
+            <svg>
+              <use xlink:href='./assets/images/sprite.svg#max'></use>
+            </svg>
+          </a>
+        </li>
+        <li class="icon-blue">
+          <a href="#" aria-label="telegram">
+            <svg>
+              <use xlink:href='./assets/images/sprite.svg#telegram'></use>
+            </svg>
+          </a>
+        </li>
+        <li class="icon-blue">
+          <a href="#" aria-label="vk">
+            <svg>
+              <use xlink:href='./assets/images/sprite.svg#vk'></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mcontacts-item">
+      <a href="mailto:taganskiy-cdp@ummey.ru" class="mcontacts-mail h4">taganskiy-cdp@ummey.ru</a>
+      <p class="mt-8 body-1 font-regular">Пишите по вопросам поступления</p>
+    </div>
+
+    <div class="mcontacts-item">
+      <h3 href="mailto:taganskiy-cdp@ummey.ru" class="mcontacts-mail h4">г. Москва, ул. Нижегородская, 3 эт., каб. 3а2</h3>
+      <p class="mt-8 body-1 font-regular">Часы работы офиса <strong>с 9:30 до 18:00</strong></p>
+    </div>
   </div>
 </section>

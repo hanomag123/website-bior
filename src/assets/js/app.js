@@ -344,4 +344,30 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     })
   }
+
+    const galleryswipers = document.querySelectorAll('.gallery-wrap')
+  if (galleryswipers.length) {
+    galleryswipers.forEach(el => {
+      const nextEl = el.querySelector('.next')
+      const prevEl = el.querySelector('.prev')
+      const pagination = el.querySelector('.swiper-pagination')
+      const slides = el.querySelectorAll('.swiper-slide')
+      const swiper = el.querySelector('.swiper')
+
+      if (!swiper) {
+        return
+      }
+      new Swiper(swiper, {
+        loop: slides.length > 3,
+        slidesPerView: 'auto',
+        pagination: {
+          el: pagination
+        },
+        navigation: {
+          prevEl,
+          nextEl
+        }
+      })
+    })
+  }
 });
