@@ -372,4 +372,10 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     })
   }
+
+  const maininput = document.querySelector('.main-input')
+
+  if (maininput && xl.matches) {
+    maininput.placeholder = maininput.placeholder.slice(0, 12) + '...'
+  }
 });

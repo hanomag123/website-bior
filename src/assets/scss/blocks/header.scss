@@ -77,6 +77,11 @@
   align-items: center;
   gap: 1.2rem;
 
+  @include breakpoint($xl-bp) {
+    margin-left: auto;
+    margin-right: 0.8rem;
+  }
+
   &::before {
     content: '';
     background: var(--border-inverse);

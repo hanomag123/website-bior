@@ -115,7 +115,13 @@ h1,
   font-size: 3.2rem;
   line-height: 125%;
   text-transform: uppercase;
-  text-align: center;
+
+  @include breakpoint($xl-bp) {
+    font-weight: 600;
+    font-size: 2.8rem;
+    line-height: 129%;
+    text-transform: uppercase;
+  }
 }
 
 h2,
@@ -444,6 +450,9 @@ hr {
 
 .mt-64 {
   margin-top: 6.4rem;
+  @include breakpoint($xl-bp) {
+    margin-top: 4rem;
+  }
 }
 
 .mt-52 {
@@ -512,6 +521,9 @@ hr {
 
 .mb-64 {
   margin-bottom: 6.4rem;
+  @include breakpoint($xl-bp) {
+    margin-bottom: 4.4rem;
+  }
 }
 
 .pt-80 {
@@ -556,7 +568,7 @@ hr {
   color: var(--text--icon-hover-primary);
 
   @include breakpoint($xl-bp) {
-    padding: 1.1rem;
+    padding: 1rem;
     padding-left: 1.95rem;
     width: 100%;
   }

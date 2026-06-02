@@ -17,6 +17,9 @@
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+  @include breakpoint($xl-bp) {
+    gap: 2.4rem;
+  }
 }
 
 .footer-logo {
@@ -33,12 +36,19 @@
 
 .footer-btn {
   width: fit-content;
+  @include breakpoint($xl-bp) {
+    width: 100%;
+  }
 }
 
 .footer-socials {
   display: flex;
   gap: 1.6rem;
   align-items: center;
+
+  @include breakpoint($xl-bp) {
+    justify-content: center;
+  }
 
   &>* {
     a {
@@ -73,6 +83,8 @@
     margin-left: 0;
     border-top: 1px solid var(--background-surface-light---hover);
     padding-top: 2.4rem;
+
+    margin-top: 2.4rem;
   }
 
   &>* {

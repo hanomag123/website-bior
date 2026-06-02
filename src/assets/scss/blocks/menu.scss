@@ -11,66 +11,32 @@
 }
 
 .menu-button {
-  width: 4rem;
-  height: 3.4rem;
-  background-color: transparent;
-  border: 0;
+  border: 1px solid var(--border-inverse);
+  border-radius: 0.8rem;
+  padding: 0.8rem 1.2rem;
+  width: 4.8rem;
+  height: 4.2rem;
 
   z-index: 4;
   display: none;
   position: relative;
 
-  .burger-button-close {
+  align-items: center;
+  justify-content: center;
 
-    #first-line-burger,
-    #second-line-burger,
-    #third-line-burger {
-      width: 100%;
-      height: 0.2rem;
-      border-radius: 0.1rem;
-      background-color: black;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%);
-      transform-origin: center center;
-      transition: transform 0.4s ease, opacity 0.4s ease;
-    }
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24 4.16129C24 3.51993 23.4801 3 22.8387 3H10.4516C9.81025 3 9.29032 3.51993 9.29032 4.16129C9.29032 4.80265 9.81025 5.32258 10.4516 5.32258H22.8387C23.4801 5.32258 24 4.80265 24 4.16129ZM24 11.9032C24 11.2619 23.4801 10.7419 22.8387 10.7419H1.16129C0.519926 10.7419 -1.90735e-06 11.2619 -1.90735e-06 11.9032C-1.90735e-06 12.5446 0.519926 13.0645 1.16129 13.0645H22.8387C23.4801 13.0645 24 12.5446 24 11.9032ZM24 19.6452C24 19.0038 23.4801 18.4839 22.8387 18.4839H1.16129C0.519926 18.4839 -1.90735e-06 19.0038 -1.90735e-06 19.6452C-1.90735e-06 20.2865 0.519926 20.8064 1.16129 20.8064H22.8387C23.4801 20.8064 24 20.2865 24 19.6452Z' fill='%231E447E' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 2.4rem;
 
-    #first-line-burger {
-      top: 0%;
-    }
+  @include breakpoint($xl-bp) {
+    display: flex;
+  }
 
-    #third-line-burger {
-      top: unset;
-      bottom: 0%;
-    }
+  &.menu-button--active {
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 6L6 18M6 6L18 18' stroke='%231E447E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
   }
 }
-
-.header__menu-button--active,
-.menu-button--active {
-  .burger-button-close {
-    #first-line-burger {
-      top: 50%;
-      transform: translateX(-50%) rotate(45deg);
-    }
-
-    #second-line-burger {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-
-    #third-line-burger {
-      top: 50%;
-      bottom: 0;
-      transform: translateX(-50%) rotate(-45deg);
-    }
-  }
-}
-
-
-.menu-button--active {}
 
 .overlay {
   position: absolute;

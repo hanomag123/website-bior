@@ -5,10 +5,13 @@ title: Главная
 
 <section class="main container" id="search">
   <div class="main-mainbg img-cover">
-    <img src="./assets/images/main/bg.webp" fetchpriority="high" alt="bg">
+    <picture>
+      <source srcset="./assets/images/main/bg-mobile.webp" media="(max-width:500px)">
+      <img src="./assets/images/main/bg.webp" fetchpriority="high" alt="bg">
+    </picture>
   </div>
 
-  <h1 class="main-title h1 relative">
+  <h1 class="main-title h1 text-center relative">
     ПРИГЛАШАЕМ ДИСТАНЦИОННО ПОЛУЧИТЬ СРЕДНЕЕ ИЛИ ВЫСШЕЕ ОБРАЗОВАНИЕ НА УДОБНОЙ ПЛАТФОРМЕ УМНЕЙ
   </h1>
 
@@ -422,7 +425,7 @@ title: Главная
     </form>
   </div>
 
-  <hr class="mt-64 mb-64 relative">
+  <hr class="main-hr mt-64 mb-64 relative">
 
   <h2 class="main-subtitle h2 shevron-title relative">Почему через УМНЕЙ, а не напрямую в вуз?</h2>
 
