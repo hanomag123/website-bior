@@ -61,7 +61,7 @@
 }
 
 .footer-nav {
-  columns: 2;
+  display: flex;
   margin-left: auto;
   gap: 8rem;
 
@@ -69,10 +69,16 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    
+    margin-left: 0;
+    border-top: 1px solid var(--background-surface-light---hover);
+    padding-top: 2.4rem;
   }
 
   &>* {
-    margin-bottom: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
   }
 
   a {

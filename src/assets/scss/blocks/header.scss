@@ -18,11 +18,18 @@
 
   border-bottom: 1px solid var(--border-inverse);
 
-  @include breakpoint($xl-bp) {}
+  @include breakpoint($xl-bp) {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+  }
 }
 
 .out {
   transform: translate3d(0, calc(-100% - 1rem), 0);
+  @include breakpoint($xl-bp) {
+    transform: none;
+    will-change: auto;
+  }
 }
 
 .header-logo {
@@ -31,6 +38,11 @@
 
   margin-bottom: auto;
   transition: opacity var(--time);
+
+  @include breakpoint($xl-bp) {
+    width: 3.9rem;
+    height: 3.9rem;
+  }
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
@@ -74,6 +86,9 @@
     margin-left: 2.4rem;
 
     display: inline-block;
+    @include breakpoint($xl-bp) {
+      content: normal;
+    }
   }
 }
 

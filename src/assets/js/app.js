@@ -335,6 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
       new Swiper(swiper, {
         slidesPerView: 'auto',
         pagination: {
+          clickable: true,
           el: pagination
         },
         navigation: {
@@ -361,6 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loop: slides.length > 3,
         slidesPerView: 'auto',
         pagination: {
+          clickable: true,
           el: pagination
         },
         navigation: {
