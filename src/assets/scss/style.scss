@@ -450,6 +450,7 @@ hr {
 
 .mt-64 {
   margin-top: 6.4rem;
+
   @include breakpoint($xl-bp) {
     margin-top: 4rem;
   }
@@ -521,6 +522,7 @@ hr {
 
 .mb-64 {
   margin-bottom: 6.4rem;
+
   @include breakpoint($xl-bp) {
     margin-bottom: 4.4rem;
   }
@@ -700,6 +702,13 @@ a.link-primary {
 
   @include breakpoint($xl-bp) {
     display: block
+  }
+}
+
+.xl-flex {
+  display: none;
+  @include breakpoint($xl-bp) {
+    display: flex;
   }
 }
 

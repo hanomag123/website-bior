@@ -21,11 +21,14 @@
   @include breakpoint($xl-bp) {
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
+    will-change: auto;
+    transform: none;
   }
 }
 
 .out {
   transform: translate3d(0, calc(-100% - 1rem), 0);
+
   @include breakpoint($xl-bp) {
     transform: none;
     will-change: auto;
@@ -91,6 +94,7 @@
     margin-left: 2.4rem;
 
     display: inline-block;
+
     @include breakpoint($xl-bp) {
       content: normal;
     }
@@ -112,6 +116,11 @@
 
   @include breakpoint($xl-bp) {
     display: none;
+
+    flex-direction: row;
+    padding: 0;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
   }
 
   &::before {
@@ -127,6 +136,10 @@
     top: 50%;
     transform: translateY(-50%);
     left: 0;
+
+    @include breakpoint($xl-bp) {
+      content: normal;
+    }
   }
 
   a {
@@ -136,5 +149,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include breakpoint($xl-bp) {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
   }
 }

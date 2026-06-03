@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const copies = document.querySelectorAll("[data-copy]");
+  if (copies.length) {
+    copies.forEach((el) => {
+      const elem = document.getElementById(el.dataset.copy);
+      if (elem) {
+        elem.appendChild(el.cloneNode(true));
+      }
+    });
+  }
+
   const xl = matchMedia("(max-width: 1024px)");
 
   class Menu {
@@ -308,74 +318,81 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const summaries = document.querySelectorAll('.main-summary')
-  const tabcontent = document.querySelector('.main-tabcontent')
+  const summaries = document.querySelectorAll(".main-summary");
+  const tabcontent = document.querySelector(".main-tabcontent");
   if (summaries.length && tabcontent) {
-    summaries.forEach(el => {
-      el.addEventListener('click', function () {
-        summaries.forEach(el => el.classList.remove('active'))
-        this.classList.add('active')
-        tabcontent.innerHTML = this.nextElementSibling.innerHTML
-      })
-    })
+    summaries.forEach((el) => {
+      el.addEventListener("click", function () {
+        
+        if (xl.matches) {
+          this.classList.toggle('active')
+        } else {
+          summaries.forEach((el) => el.classList.remove("active"));
+          this.classList.add("active");
+        }
+        tabcontent.innerHTML = this.nextElementSibling.innerHTML;
+      });
+    });
 
-    summaries[0].click()
+    if (!xl.matches) {
+          summaries[0].click();
+    }
   }
 
-  const mainswipers = document.querySelectorAll('.main-swiperwrap')
+  const mainswipers = document.querySelectorAll(".main-swiperwrap");
   if (mainswipers.length) {
-    mainswipers.forEach(el => {
-      const nextEl = el.querySelector('.next')
-      const prevEl = el.querySelector('.prev')
-      const pagination = el.querySelector('.swiper-pagination')
-      const swiper = el.querySelector('.swiper')
+    mainswipers.forEach((el) => {
+      const nextEl = el.querySelector(".next");
+      const prevEl = el.querySelector(".prev");
+      const pagination = el.querySelector(".swiper-pagination");
+      const swiper = el.querySelector(".swiper");
       if (!swiper) {
         return;
       }
       new Swiper(swiper, {
-        slidesPerView: 'auto',
+        slidesPerView: "auto",
         pagination: {
           clickable: true,
-          el: pagination
+          el: pagination,
         },
         navigation: {
           prevEl,
-          nextEl
-        }
-      })
-    })
+          nextEl,
+        },
+      });
+    });
   }
 
-    const galleryswipers = document.querySelectorAll('.gallery-wrap')
+  const galleryswipers = document.querySelectorAll(".gallery-wrap");
   if (galleryswipers.length) {
-    galleryswipers.forEach(el => {
-      const nextEl = el.querySelector('.next')
-      const prevEl = el.querySelector('.prev')
-      const pagination = el.querySelector('.swiper-pagination')
-      const slides = el.querySelectorAll('.swiper-slide')
-      const swiper = el.querySelector('.swiper')
+    galleryswipers.forEach((el) => {
+      const nextEl = el.querySelector(".next");
+      const prevEl = el.querySelector(".prev");
+      const pagination = el.querySelector(".swiper-pagination");
+      const slides = el.querySelectorAll(".swiper-slide");
+      const swiper = el.querySelector(".swiper");
 
       if (!swiper) {
-        return
+        return;
       }
       new Swiper(swiper, {
         loop: slides.length > 3,
-        slidesPerView: 'auto',
+        slidesPerView: "auto",
         pagination: {
           clickable: true,
-          el: pagination
+          el: pagination,
         },
         navigation: {
           prevEl,
-          nextEl
-        }
-      })
-    })
+          nextEl,
+        },
+      });
+    });
   }
 
-  const maininput = document.querySelector('.main-input')
+  const maininput = document.querySelector(".main-input");
 
   if (maininput && xl.matches) {
-    maininput.placeholder = maininput.placeholder.slice(0, 12) + '...'
+    maininput.placeholder = maininput.placeholder.slice(0, 12) + "...";
   }
 });

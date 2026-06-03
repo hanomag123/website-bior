@@ -3,11 +3,29 @@
 
   @include breakpoint($xl-bp) {
     display: none;
+
+    background-color: #fafafa;
+
+    position: fixed;
+    top: 6.9rem;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 6.9rem);
+
+    animation: fadeEffect var(--time);
+
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+
+    overflow-y: auto;
+
+    padding-top: 4.8rem;
+    padding-bottom: 4.2rem;
   }
 }
 
 .menu--open {
-  transform: translateX(0);
+  display: block;
 }
 
 .menu-button {
@@ -50,9 +68,73 @@
   justify-content: center;
   gap: 7.2rem;
 
-  ul {
+  @include breakpoint($xl-bp) {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1.2rem;
+
+    padding: 1.2rem 1.6rem;
+    box-shadow: 0 4px 12px 0 rgba(146, 146, 146, 0.01);
+    background: var(--background-surface-light);
+    border-radius: 0.8rem;
+
+    margin-top: 1.2rem;
+  }
+
+  &>ul {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
+
+    @include breakpoint($xl-bp) {
+      gap: 1.2rem;
+
+      a {
+        padding: 0.8rem 1.2rem;
+        display: block;
+      }
+    }
+  }
+}
+
+.menu-card {
+  @include breakpoint($xl-bp) {
+    border-radius: 0.8rem;
+    padding: 1.6rem 3.2rem;
+    box-shadow: 0 4px 12px 0 rgba(146, 146, 146, 0.01);
+    background: var(--background-surface-light);
+    margin-top: 1.2rem;
+  }
+}
+
+.menu-socials {
+  @include breakpoint($xl-bp) {
+    border-top: 1px solid var(--border-inverse);
+    padding-top: 1.6rem;
+  }
+
+  .header-socials {
+    @include breakpoint($xl-bp) {
+      display: flex;
+    }
+  }
+}
+
+.menu-privacy,
+.menu-phone {
+  @include breakpoint($xl-bp) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.menu-lk a,
+.menu-lk {
+  @include breakpoint($xl-bp) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
   }
 }

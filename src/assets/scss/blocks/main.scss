@@ -96,19 +96,68 @@
 
   grid-template-columns: 25.9rem 1fr;
 
+  @include breakpoint($xl-bp) {
+    flex-direction: column;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: none;
+    z-index: 20;
+
+    padding: 2.4rem 1.6rem;
+    padding-bottom: 0;
+    padding-top: 9.6rem;
+    border: 0;
+    background: rgba(47, 50, 57, 0.8);
+    border-radius: 0;
+
+    height: 100%;
+    max-height: 100%;
+
+    overflow-y: auto;
+  }
+
   &.opened {
     display: grid;
+
+    @include breakpoint($xl-bp) {
+      display: flex;
+    }
   }
 }
 
 .main-inner {
   display: none;
+
+  @include breakpoint($xl-bp) {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--time);
+  }
 }
 
 .main-accordions {
   padding: 1.6rem;
   max-height: 45.1rem;
   overflow-y: auto;
+
+  @include breakpoint($xl-bp) {
+    padding: 0;
+    max-height: 100%;
+    border-bottom-right-radius: 0.8rem;
+    border-bottom-left-radius: 0.8rem;
+
+    background-color: #E0E4EA;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.main-accordion {
+  
 }
 
 .main-summary {
@@ -124,6 +173,17 @@
 
   color: var(--text--icon-secondary);
   border: 1px solid transparent;
+
+  @include breakpoint($xl-bp) {
+    background: var(--background-surface-light);
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    border-radius: 0;
+  }
 
   &::after {
     content: '';
@@ -146,12 +206,22 @@
     border-color: var(--border-inverse);
 
     background: var(--background-back);
+
+    @include breakpoint($xl-bp) {
+      &+.main-inner {
+        grid-template-rows: 1fr;
+      }
+    }
   }
 }
 
 .main-tabwrapper {
   padding-right: 1.6rem;
   background: var(--border-inverse);
+
+  @include breakpoint($xl-bp) {
+    display: none;
+  }
 }
 
 .main-tabcontent {
@@ -177,8 +247,23 @@
   gap: 2.4rem;
   transition: color var(--time);
 
+  @include breakpoint($xl-bp) {
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
   &.columns-3 {
     columns: 3;
+
+    @include breakpoint($xl-bp) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   a {
@@ -198,8 +283,20 @@
 
     break-inside: avoid;
 
+    @include breakpoint($xl-bp) {
+      &:first-child {
+        margin-top: 1.6rem;
+      }
+    }
+
     &:last-child {
       margin-bottom: 0;
+
+      @include breakpoint($xl-bp) {
+        &:last-child {
+          margin-bottom: 1.6rem;
+        }
+      }
     }
 
     ul {
@@ -325,7 +422,7 @@
   background: var(--background-back);
 
   position: absolute;
-  top: 0.6rem;
+  top: 0.7rem;
   left: 0.8rem;
 
   animation: fadeEffect var(--time);
@@ -547,7 +644,7 @@
 .main-reset {
   position: absolute;
   right: 16.5rem;
-  top: 1.65rem;
+  top: 1.7rem;
   width: 2.4rem;
   height: 2.4rem;
   animation: fadeEffect var(--time);
@@ -568,7 +665,7 @@
 .main-submit {
   position: absolute;
   right: 1.6rem;
-  top: 0.8rem;
+  top: 0.9rem;
   height: 4.1rem;
   padding: 0.84rem 2rem;
   animation: fadeEffect var(--time);
@@ -588,6 +685,26 @@
   padding-right: 0.8rem;
 
   display: none;
+}
+
+.main-catalogback {
+  display: none;
+
+  @include breakpoint($xl-bp) {
+    display: block;
+    position: fixed;
+    top: 2.4rem;
+    left: 1.6rem;
+    width: 12.6rem;
+  }
+}
+
+.main-innerbtn {
+  display: none;
+
+  @include breakpoint($xl-bp) {
+    display: block;
+  }
 }
 
 .main-datalist {
@@ -819,8 +936,9 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  height: 13.5rem;
+  height: 12.5rem;
   width: 100%;
+  max-width: 21.5rem;
 
   img {
     object-position: right bottom;
