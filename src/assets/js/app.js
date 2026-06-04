@@ -211,49 +211,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return wrapper;
   }
 
-  const change = new Event("change", { bubbles: true });
-  const wrapper = document.querySelector(".main-search");
-
-  const dropdownbtn = document.querySelector(".dropdown-btn");
-  if (dropdownbtn && wrapper) {
-    dropdownbtn.addEventListener("click", function (event) {
-      event.stopPropagation();
-      this.classList.toggle("opened");
-      wrapper.classList.toggle("focused");
-    });
-
-    document.addEventListener("click", function () {
-      if (!event.target.closest(".dropdown-items")) {
-        dropdownbtn.classList.remove("opened");
-
-        dropdownbtn.dispatchEvent(change);
-        wrapper.classList.remove("focused");
-      }
-    });
-  }
-
-  const checkboxes = document.querySelectorAll(
-    '.js-checkboxes .checkbox-label input[type="checkbox"]',
-  );
-  const chips = document.querySelector(".js-chips");
-  if (checkboxes.length && chips && wrapper) {
-    checkboxes.forEach((el) => {
-      const chip = el.parentElement.querySelector(".js-chip");
-      chip.addEventListener("click", function () {
-        this.hidden = true;
-        el.checked = false;
-      });
-      chips.appendChild(chip);
-      el.addEventListener("change", function () {
-        chip.hidden = !this.checked;
-
-        const isAnyChecked = [...checkboxes].some((el) => el.checked);
-
-        wrapper.classList.toggle("has-level", isAnyChecked);
-      });
-    });
-  }
-
   function debounce(func, delay) {
     let timeoutId;
     return function (...args) {
@@ -262,58 +219,238 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  const search = document.querySelector(".js-search");
-  if (search && wrapper) {
-    const debouncedInputHandler = debounce(function () {
-      if (search.value.length > 3) {
-        search.dispatchEvent(change);
+  class Search {
+    constructor(search) {
+      this.wrap = search;
 
-        wrapper.classList.add("has-text");
+      this.dropdownbtn = search.querySelector(".js-dropdown");
+      this.dropdownbtnmobile = search.querySelector(".js-dropdown-mobile");
+
+      this.searchblock = search.querySelector(".main-search.desctop");
+
+      this.dropdown = search.querySelector(".js-checkboxes");
+      this.dropdowncopy = search.querySelector(".js-checkboxes-copy");
+
+      this.searchMobile = search.querySelector(".js-search-mobile");
+      this.searchInput = search.querySelector(".js-search");
+
+      this.popup = search.querySelector(".main-searchpopup");
+
+      this.dropdownHandle = function () {
+        if (!event.target.closest(".dropdown-items, .dropdown-opened")) {
+          this.closeDropdown();
+        }
+      };
+
+      this.boundDropdownHandle = this.dropdownHandle.bind(this);
+
+      this.chipsWrapper = search.querySelector(".js-chips");
+
+      if (!this.chipsWrapper) {
+        return;
       }
 
-      if (search.value.length === 0) {
-        search.dispatchEvent(change);
-
-        wrapper.classList.remove("has-text");
-      }
-    }, 300);
-
-    search.addEventListener("input", debouncedInputHandler);
-  }
-
-  const reset = document.querySelector(".js-reset");
-  if (reset && search && checkboxes && chips) {
-    reset.addEventListener("click", function () {
-      search.value = "";
-      wrapper.classList.remove("has-text");
-      wrapper.classList.remove("has-level");
-
-      const innerchips = chips.querySelectorAll(".js-chip");
-      if (innerchips.length) {
-        innerchips.forEach((el) => (el.hidden = true));
+      if (!this.popup) {
+        return;
       }
 
-      checkboxes.forEach((el) => {
-        el.checked = false;
+      if (!this.searchMobile || !this.searchInput) {
+        return;
+      }
+
+      if (!this.dropdown || !this.dropdowncopy) {
+        return;
+      }
+
+      if (!this.dropdownbtn || !this.dropdownbtnmobile) {
+        return;
+      }
+
+      if (!this.searchblock) {
+        return;
+      }
+
+      this.init();
+    }
+
+    init() {
+      this.dropdownbtn.addEventListener("click", () => {
+        this.toggleDropdown();
+
+        if (xl.matches) {
+          this.openPopup();
+        }
       });
 
-      search.dispatchEvent(change);
-    });
+      this.dropdownbtnmobile.addEventListener("click", () => {
+        this.toggleDropdown();
+      });
+
+      this.searchblock.addEventListener("click", () => {
+        if (xl.matches) {
+          event.preventDefault();
+          this.openPopup();
+        }
+      });
+
+      if (xl.matches) {
+        this.dropdowncopy.appendChild(this.dropdown);
+      }
+
+      this.popup.addEventListener("click", () => {
+        if (xl.matches && event.target === this.popup) {
+          this.closePopup();
+          this.closeDropdown();
+        }
+      });
+
+      this.initChips();
+
+      this.initSearchInput();
+    }
+
+    initChips() {
+      const checkboxes = this.dropdown.querySelectorAll(
+        '.checkbox-label input[type="checkbox"]',
+      );
+
+      if (checkboxes.length && this.chipsWrapper && this.wrap) {
+        checkboxes.forEach((checkbox) => {
+          const chip = checkbox
+            .closest(".checkbox-label")
+            .querySelector(".js-chip");
+
+          if (!chip) return;
+
+          chip.addEventListener("click", () => {
+            chip.hidden = true;
+            checkbox.checked = false;
+
+            const isAnyChecked = [...checkboxes].some((el) => el.checked);
+            this.wrap.classList.toggle("has-level", isAnyChecked);
+          });
+
+          this.chipsWrapper.appendChild(chip);
+
+          checkbox.addEventListener("change", () => {
+            chip.hidden = !checkbox.checked;
+
+            const isAnyChecked = [...checkboxes].some((el) => el.checked);
+            this.wrap.classList.toggle("has-level", isAnyChecked);
+          });
+        });
+      }
+    }
+
+    initSearchInput() {
+      const change = new Event("change", { bubbles: true });
+
+      const debouncedInputHandler = debounce(() => {
+        if (this.searchInput.value.length > 3) {
+          this.searchInput.dispatchEvent(change);
+          this.wrap.classList.add("has-text");
+        } else if (this.searchInput.value.length === 0) {
+          this.wrap.classList.remove("has-text");
+        }
+
+        if (this.searchInput.value === "") {
+          this.searchInput.dispatchEvent(change);
+        }
+      }, 300);
+
+      this.searchInput.addEventListener("input", debouncedInputHandler);
+
+      if (this.searchMobile) {
+        const debouncedMobileInputHandler = debounce(() => {
+          if (this.searchMobile.value.length > 3) {
+            this.searchMobile.dispatchEvent(change);
+            this.wrap.classList.add("has-text");
+          } else if (this.searchMobile.value.length === 0) {
+            this.wrap.classList.remove("has-text");
+          }
+
+          if (this.searchMobile.value === "") {
+            this.searchMobile.dispatchEvent(change);
+          }
+        }, 300);
+
+        this.searchMobile.addEventListener(
+          "input",
+          debouncedMobileInputHandler,
+        );
+      }
+    }
+
+    dropdownOpened() {
+      return this.wrap.classList.contains("dropdown-opened");
+    }
+
+    toggleDropdown() {
+      this.wrap.classList.toggle("dropdown-opened");
+
+      if (this.dropdownOpened()) {
+        document.addEventListener("click", this.boundDropdownHandle);
+      } else {
+        document.removeEventListener("click", this.boundDropdownHandle);
+      }
+    }
+
+    openDropdown() {
+      if (!this.dropdownOpened()) {
+        this.wrap.classList.add("dropdown-opened");
+        document.addEventListener("click", this.boundDropdownHandle);
+      }
+    }
+
+    closeDropdown() {
+      if (this.dropdownOpened()) {
+        this.wrap.classList.remove("dropdown-opened");
+        document.removeEventListener("click", this.boundDropdownHandle);
+      }
+    }
+
+    openPopup() {
+      this.wrap.classList.add("popup-opened");
+      this.searchMobile.focus();
+    }
+
+    closePopup() {
+      this.wrap.classList.remove("popup-opened");
+    }
+  }
+
+  const search = document.getElementById("search-wrap");
+
+  if (search) {
+    new Search(search);
   }
 
   const catalogbtn = document.querySelector(".main-catalogbtn");
-  const catalog = document.querySelector(".main-catalog");
+  const catalog = document.getElementById("main-catalog");
   const catalogback = document.querySelector(".js-catalog-back");
+
+  function catalogHandle() {
+    if (!event.target.closest(".main-catalog, .main-catalogbtn.opened")) {
+      catalog.closeCatalog();
+    }
+
+    if (xl.matches && event.target.classList.contains("main-catalog")) {
+      catalog.closeCatalog();
+    }
+  }
+
   if (catalogbtn && catalog && catalogback) {
     catalog.toggleOpened = function () {
       catalogbtn.classList.toggle("opened");
       catalog.classList.toggle("opened");
 
       if (catalogbtn.classList.contains("opened")) {
+        document.addEventListener("click", catalogHandle);
         if (xl.matches) {
           disableScroll();
         }
       } else {
+        document.removeEventListener("click", catalogHandle);
         enableScroll();
       }
     };
@@ -322,21 +459,11 @@ document.addEventListener("DOMContentLoaded", () => {
       catalogbtn.classList.remove("opened");
       catalog.classList.remove("opened");
       enableScroll();
+      document.removeEventListener("click", catalogHandle);
     };
 
     catalogbtn.addEventListener("click", function (event) {
-      event.stopPropagation();
       catalog.toggleOpened();
-    });
-
-    document.addEventListener("click", function () {
-      if (!event.target.closest(".main-catalog")) {
-        catalog.closeCatalog();
-      }
-
-      if (xl.matches && event.target.classList.contains("main-catalog")) {
-        catalog.closeCatalog();
-      }
     });
 
     catalogback.addEventListener("click", function () {
@@ -415,9 +542,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const maininput = document.querySelector(".main-input");
+  const maininput = document.querySelectorAll(".main-input");
 
-  if (maininput && xl.matches) {
-    maininput.placeholder = maininput.placeholder.slice(0, 12) + "...";
+  if (maininput.length && xl.matches) {
+    maininput.forEach((el) => {
+      el.placeholder = el.placeholder.slice(0, 12) + "...";
+    });
   }
 });
