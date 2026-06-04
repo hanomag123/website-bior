@@ -354,6 +354,12 @@
       }
     }
   }
+
+  .main-searchpopup & {
+    @include breakpoint($xl-bp) {
+      top: 7rem;
+    }
+  }
 }
 
 .main-searchpopup {
@@ -395,6 +401,16 @@
   background: var(--background-back);
 
   color: var(--text--icon-secondary);
+
+  .is-loading & {
+    display: block;
+  }
+
+  .desctop & {
+    @include breakpoint($xl-bp) {
+      display: none;
+    }
+  }
 
   svg {
     animation: rotating 2s linear infinite;
@@ -450,6 +466,16 @@
     right: 1.2rem;
 
     transition: transform var(--time);
+  }
+
+  .is-loading & {
+    display: none;
+  }
+
+  .desctop & {
+    @include breakpoint($xl-bp) {
+      display: block;
+    }
   }
 
   .dropdown-opened & {
@@ -589,6 +615,17 @@
     outline: none;
     border-color: var(--text--icon-secondary);
   }
+
+  .is-loading & {
+    padding-left: 6.4rem;
+    padding-right: 16rem;
+  }
+
+  .desctop & {
+    @include breakpoint($xl-bp) {
+      padding-right: 1.6rem;
+    }
+  }
 }
 
 .main-chips {
@@ -599,6 +636,18 @@
   gap: 1.2rem;
 
   overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include breakpoint($xl-bp) {
+    position: relative;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    width: calc(100% + 3.2rem);
+    left: -1.6rem;
+  }
 
   &>* {
     border: 1px solid var(--text--icon-secondary);
@@ -673,6 +722,16 @@
   @include breakpoint($xl-bp) {
     right: 13.5rem;
   }
+
+  .has-text & {
+    display: flex;
+  }
+
+  &.desctop {
+    @include breakpoint($xl-bp) {
+      display: none;
+    }
+  }
 }
 
 .main-submit {
@@ -688,6 +747,16 @@
   @include breakpoint($xl-bp) {
     width: 11rem;
   }
+
+  .has-text & {
+    display: flex;
+  }
+
+  &.desctop {
+    @include breakpoint($xl-bp) {
+      display: none;
+    }
+  }
 }
 
 .main-result {
@@ -698,6 +767,18 @@
   padding-right: 0.8rem;
 
   display: none;
+
+  @include breakpoint($xl-bp) {
+    position: fixed;
+    top: 15.9rem;
+    left: 1.6rem;
+    width: calc(100% - 3.2rem);
+    z-index: 110;
+  }
+
+  .is-fetched & {
+    display: block;
+  }
 }
 
 .main-catalogback {
@@ -744,6 +825,10 @@
 
   overflow-y: auto;
   animation: fadeEffect var(--time);
+
+  @include breakpoint($xl-bp) {
+    max-height: 37.6rem;
+  }
 
   .empty & {
     display: none;

@@ -366,7 +366,24 @@ title: Главная
 
     <!-- Search -->
     <div class="main-searchwrap" id="search-wrap">
-      <form action="search.html" onchange="console.log(Object.fromEntries(new FormData(this)))">
+
+      <form action="search.html" id="searchform">
+
+        <script defer>
+          searchform.addEventListener('search', function () {
+            const data = Object.fromEntries(new FormData(this))
+            console.log(data)
+            if (data['bior-search'] || data['mobile-search'] || data['level1'] === 'on' || data['level2'] === 'on' || data['level3'] === 'on') {
+              setTimeout(() => {
+                this.parentElement.classList.add('is-fetched')
+              }, 500)
+            } else {
+              this.parentElement.classList.remove('is-fetched')
+            }
+
+          })
+        </script>
+
         <div class="main-search desctop">
           <div class="main-loading"><svg>
               <use xlink:href='./assets/images/sprite.svg#loading'></use>
@@ -377,7 +394,7 @@ title: Главная
           <div class="dropdown-items dropdown-style body-2 js-checkboxes">
             <div class="dropdown-inner custom-scrollbar">
               <label class="checkbox-label">
-                <input type="checkbox" name="Высшее">
+                <input type="checkbox" name="level1">
                 <span class="checkbox-box"></span>
                 Высшее
 
@@ -386,7 +403,7 @@ title: Главная
                 </span>
               </label>
               <label class="checkbox-label">
-                <input type="checkbox" name="СПО">
+                <input type="checkbox" name="level2">
                 <span class="checkbox-box"></span>
                 СПО
 
@@ -395,7 +412,7 @@ title: Главная
                 </span>
               </label>
               <label class="checkbox-label">
-                <input type="checkbox" name="КУРСЫ, ДПО">
+                <input type="checkbox" name="level3">
                 <span class="checkbox-box"></span>
                 КУРСЫ, ДПО
 
@@ -409,11 +426,11 @@ title: Главная
 
           <input type="text" name="bior-search" class="main-input body-2 font-regular js-search" placeholder="Искать специальность…">
 
-          <button type="reset" class="main-reset js-reset"><svg>
+          <button type="reset" class="main-reset js-reset desctop"><svg>
               <use xlink:href='./assets/images/sprite.svg#close'></use>
             </svg></button>
 
-          <button type="submit" class="main-submit btn btn-blue">Искать <svg>
+          <button type="submit" class="main-submit btn btn-blue desctop">Искать <svg>
               <use xlink:href='./assets/images/sprite.svg#search'></use>
             </svg></button>
 
@@ -446,40 +463,29 @@ title: Главная
             <div class="main-loading"><svg>
                 <use xlink:href='./assets/images/sprite.svg#loading'></use>
               </svg></div>
-  
+
             <button type="button" class="dropdown-btn body-3 js-dropdown-mobile">Уровень обучения</button>
 
             <!-- Levels Mobile -->
             <div class="js-checkboxes-copy"></div>
             <!-- Levels Mobile -->
-  
+
+            <button type="button" class="main-catalogback btn btn-black js-search-back">
+              <svg>
+                <use xlink:href='./assets/images/sprite.svg#arrow'></use>
+              </svg>
+              Назад
+            </button>
+
             <input type="text" name="mobile-search" class="main-input body-2 font-regular js-search-mobile" placeholder="Искать специальность…">
-  
+
             <button type="reset" class="main-reset js-reset"><svg>
                 <use xlink:href='./assets/images/sprite.svg#close'></use>
               </svg></button>
-  
+
             <button type="submit" class="main-submit btn btn-blue">Искать <svg>
                 <use xlink:href='./assets/images/sprite.svg#search'></use>
               </svg></button>
-  
-            <div class="main-result dropdown-style">
-              <ul class="main-datalist custom-scrollbar body-2">
-                <li><a href="special.html">Менеджмент (бакалавриат)</a></li>
-                <li><a href="special.html">Управление персоналом (бакалавриат)</a></li>
-                <li><a href="special.html">Информационный менеджмент (высшее, магистратура)</a></li>
-                <li><a href="special.html">Государственное и муниципальное управление (высшее, магистратура)</a></li>
-                <li><a href="special.html">Финансовый менеджмент (бакалавриат)</a></li>
-                <li><a href="special.html">Финансовый менеджмент (бакалавриат)</a></li>
-                <li><a href="special.html">Менеджмент (бакалавриат)</a></li>
-                <li><a href="special.html">Менеджмент (бакалавриат)</a></li>
-              </ul>
-  
-              <!-- "empty" class on parent -->
-              <div class="main-empty body-2">
-                Ничего не найдено. Уточните уровень обучения
-              </div>
-            </div>
           </div>
         </div>
         <!-- Search Mobile Popup -->

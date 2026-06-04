@@ -236,6 +236,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       this.popup = search.querySelector(".main-searchpopup");
 
+      this.resets = search.querySelectorAll(".js-reset");
+
       this.dropdownHandle = function () {
         if (!event.target.closest(".dropdown-items, .dropdown-opened")) {
           this.closeDropdown();
@@ -245,6 +247,16 @@ document.addEventListener("DOMContentLoaded", () => {
       this.boundDropdownHandle = this.dropdownHandle.bind(this);
 
       this.chipsWrapper = search.querySelector(".js-chips");
+
+      this.backbtn = search.querySelector(".js-search-back");
+
+      if (!this.backbtn) {
+        return;
+      }
+
+      if (!this.resets) {
+        return;
+      }
 
       if (!this.chipsWrapper) {
         return;
@@ -274,11 +286,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     init() {
-      this.dropdownbtn.addEventListener("click", () => {
-        this.toggleDropdown();
+      this.backbtn.addEventListener("click", () => {
+        this.closePopup();
+      });
+
+            this.dropdownbtn.addEventListener("click", () => {
+        
 
         if (xl.matches) {
+          event.stopPropagation()
+          this.openDropdown();
           this.openPopup();
+        } else {
+          this.toggleDropdown()
         }
       });
 
@@ -290,6 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (xl.matches) {
           event.preventDefault();
           this.openPopup();
+          this.searchMobile.focus();
         }
       });
 
@@ -304,9 +325,34 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
+      this.resets.forEach((reset) => {
+        reset.addEventListener("click", () => {
+          this.resetAll();
+        });
+      });
+
       this.initChips();
 
       this.initSearchInput();
+    }
+
+    resetAll() {
+      this.closeDatalist();
+      this.wrap.classList.remove("is-fetched");
+
+      this.searchMobile.value = "";
+      this.searchInput.value = "";
+
+      const checkboxes = this.dropdown.querySelectorAll(
+        '.checkbox-label input[type="checkbox"]',
+      );
+      const change = new Event("change");
+      if (checkboxes.length) {
+        checkboxes.forEach((el) => {
+          el.checked = false;
+          el.dispatchEvent(change);
+        });
+      }
     }
 
     initChips() {
@@ -342,15 +388,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    hasLevel() {
+      return this.wrap.classList.contains("has-level");
+    }
+
     initSearchInput() {
-      const change = new Event("change", { bubbles: true });
+      const change = new Event("search", { bubbles: true });
 
       const debouncedInputHandler = debounce(() => {
         if (this.searchInput.value.length > 3) {
           this.searchInput.dispatchEvent(change);
-          this.wrap.classList.add("has-text");
+          this.openDatalist();
         } else if (this.searchInput.value.length === 0) {
-          this.wrap.classList.remove("has-text");
+          this.closeDatalist();
         }
 
         if (this.searchInput.value === "") {
@@ -358,27 +408,51 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }, 300);
 
+      this.searchMobile.addEventListener("focus", () => {
+        this.closeDropdown();
+        if (this.hasLevel()) {
+          this.openDatalist();
+          const change = new Event("search", { bubbles: true });
+          this.searchMobile.dispatchEvent(change);
+        }
+      });
+
+      this.searchInput.addEventListener("focus", () => {
+        this.closeDropdown();
+
+        if (this.hasLevel()) {
+          this.openDatalist();
+          const change = new Event("search", { bubbles: true });
+          this.searchInput.dispatchEvent(change);
+        }
+      });
+
       this.searchInput.addEventListener("input", debouncedInputHandler);
 
-      if (this.searchMobile) {
-        const debouncedMobileInputHandler = debounce(() => {
-          if (this.searchMobile.value.length > 3) {
-            this.searchMobile.dispatchEvent(change);
-            this.wrap.classList.add("has-text");
-          } else if (this.searchMobile.value.length === 0) {
-            this.wrap.classList.remove("has-text");
-          }
+      const debouncedMobileInputHandler = debounce(() => {
+        if (this.searchMobile.value.length > 3) {
+          this.searchMobile.dispatchEvent(change);
+          this.openDatalist();
+        } else if (this.searchMobile.value.length === 0) {
+          this.closeDatalist();
+        }
 
-          if (this.searchMobile.value === "") {
-            this.searchMobile.dispatchEvent(change);
-          }
-        }, 300);
+        if (this.searchMobile.value === "") {
+          this.searchMobile.dispatchEvent(change);
+        }
+      }, 300);
 
-        this.searchMobile.addEventListener(
-          "input",
-          debouncedMobileInputHandler,
-        );
-      }
+      this.searchMobile.addEventListener("input", debouncedMobileInputHandler);
+    }
+
+    openDatalist() {
+      this.wrap.classList.add("has-text");
+      this.wrap.classList.add("is-loading");
+    }
+
+    closeDatalist() {
+      this.wrap.classList.remove("has-text");
+      this.wrap.classList.remove("is-loading");
     }
 
     dropdownOpened() {
@@ -411,11 +485,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     openPopup() {
       this.wrap.classList.add("popup-opened");
-      this.searchMobile.focus();
     }
 
     closePopup() {
       this.wrap.classList.remove("popup-opened");
+      this.closeDropdown();
+      this.resetAll();
     }
   }
 
