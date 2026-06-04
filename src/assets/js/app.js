@@ -303,18 +303,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const catalogbtn = document.querySelector(".main-catalogbtn");
   const catalog = document.querySelector(".main-catalog");
-  if (catalogbtn && catalog) {
+  const catalogback = document.querySelector(".js-catalog-back");
+  if (catalogbtn && catalog && catalogback) {
+    catalog.toggleOpened = function () {
+      catalogbtn.classList.toggle("opened");
+      catalog.classList.toggle("opened");
+
+      if (catalogbtn.classList.contains("opened")) {
+        if (xl.matches) {
+          disableScroll();
+        }
+      } else {
+        enableScroll();
+      }
+    };
+
+    catalog.closeCatalog = function () {
+      catalogbtn.classList.remove("opened");
+      catalog.classList.remove("opened");
+      enableScroll();
+    };
+
     catalogbtn.addEventListener("click", function (event) {
       event.stopPropagation();
-      this.classList.toggle("opened");
-      catalog.classList.toggle("opened");
+      catalog.toggleOpened();
     });
 
     document.addEventListener("click", function () {
       if (!event.target.closest(".main-catalog")) {
-        catalogbtn.classList.remove("opened");
-        catalog.classList.remove("opened");
+        catalog.closeCatalog();
       }
+
+      if (xl.matches && event.target.classList.contains("main-catalog")) {
+        catalog.closeCatalog();
+      }
+    });
+
+    catalogback.addEventListener("click", function () {
+      catalog.closeCatalog();
     });
   }
 
@@ -323,9 +349,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (summaries.length && tabcontent) {
     summaries.forEach((el) => {
       el.addEventListener("click", function () {
-        
         if (xl.matches) {
-          this.classList.toggle('active')
+          this.classList.toggle("active");
         } else {
           summaries.forEach((el) => el.classList.remove("active"));
           this.classList.add("active");
@@ -335,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (!xl.matches) {
-          summaries[0].click();
+      summaries[0].click();
     }
   }
 
