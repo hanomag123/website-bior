@@ -225,6 +225,14 @@ h6,
     }
   }
 
+  &.large {
+    min-height: 7rem;
+    min-width: 30rem;
+    @include breakpoint($xl-bp) {
+      min-height: 5.6rem;
+    }
+  }
+
   &.small {
     font-size: 1.4rem;
     line-height: 129%;
@@ -559,11 +567,12 @@ hr {
 .card {
   border: 1px solid var(--border-inverse);
   border-radius: 0.8rem;
-  padding: 1.2rem 2.4rem 1.2rem 3.2rem;
+  padding: 1rem 2.4rem 1rem 3.2rem;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2.4rem;
 
   background: var(--text--icon-cta);
 

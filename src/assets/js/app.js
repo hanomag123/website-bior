@@ -24,6 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
       this.overlay = document.createElement("div");
       this.overlay.hidden = true;
       this._init();
+
+      this.buttons = this.menu.querySelectorAll('a, button')
+      if (this.buttons.length) {
+        this.buttons.forEach(el => {
+          el.addEventListener('click', () => {
+            this.closeMenu()
+          })
+        })
+      }
     }
 
     _init() {
@@ -47,8 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     closeMenu() {
-      this.menu.classList.remove("header__nav--active");
-      this.button.classList.remove("header__menu-button--active");
+      this.menu.classList.remove("menu--open");
+      this.button.classList.remove("menu-button--active");
       this.overlay.hidden = true;
 
       this.enableScroll();
@@ -290,15 +299,13 @@ document.addEventListener("DOMContentLoaded", () => {
         this.closePopup();
       });
 
-            this.dropdownbtn.addEventListener("click", () => {
-        
-
+      this.dropdownbtn.addEventListener("click", () => {
         if (xl.matches) {
-          event.stopPropagation()
+          event.stopPropagation();
           this.openDropdown();
           this.openPopup();
         } else {
-          this.toggleDropdown()
+          this.toggleDropdown();
         }
       });
 

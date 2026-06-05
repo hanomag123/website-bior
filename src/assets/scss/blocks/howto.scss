@@ -1,0 +1,5 @@
+.howto {
+  @include breakpoint($xl-bp) {
+    padding-top: 4rem;
+  }
+}

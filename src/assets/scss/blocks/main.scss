@@ -1158,6 +1158,42 @@
   }
 }
 
+.education-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 4rem;
+  @include breakpoint($xl-bp) {
+    margin-top: 2.4rem;
+    gap: 1.6rem;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.education-title2 {
+  margin-top: 7.2rem;
+}
+
+.education-desc2 {
+  max-width: 131.3rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-top: 1.6rem;
+}
+
+.education-hr {
+  margin-top: 7.2rem;
+  margin-bottom: 8.8rem;
+
+  @include breakpoint($xl-bp) {
+    margin-top: 5.2rem;
+    margin-bottom: 4.4rem;
+  }
+}
+
 .education-list {
   display: grid;
   grid-template-columns: 50.7rem 23.3rem 1fr 37rem;
