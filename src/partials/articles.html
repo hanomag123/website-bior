@@ -1,0 +1,51 @@
+<section class="articles container pt-80 pb-80">
+  <h2 class="articles-title h2 text-center">Статьи</h2>
+
+  <div class="articles-wrap">
+    <div class="swiper articles-swiper">
+      <div class="swiper-wrapper">
+        @loop('./partials/articles-item.html', [
+        {
+        img: '1.png',
+        title: 'Востребованные специальности в 2026 году.',
+        class: 'rounded',
+        },
+        {
+        img: '2.png',
+        title: 'Зачем вузы готовят столько юристов? ',
+        class: '',
+        },
+        {
+        img: '2.png',
+        class: '',
+        title: 'Как выбрать онлайн-курс: форматы, критерии, вопросы менеджеру'
+        },
+        {
+        img: '2.png',
+        class: '',
+        title: 'Как учиться во взрослом возрасте, почему это важно и не поздно'
+        },
+        {
+        img: '2.png',
+        class: '',
+        title: 'Как выбрать онлайн-курс: форматы, критерии, вопросы менеджеру'
+        },
+        ])
+      </div>
+    </div>
+
+    <div class="swiper-pagination"></div>
+
+    <button class="swiper-arrow next">
+      <svg>
+        <use xlink:href='./assets/images/sprite.svg#arrow'></use>
+      </svg>
+    </button>
+
+    <button class="swiper-arrow prev">
+      <svg>
+        <use xlink:href='./assets/images/sprite.svg#arrow'></use>
+      </svg>
+    </button>
+  </div>
+</section>

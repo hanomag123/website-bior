@@ -1,2 +1,122 @@
+<section class="center container">
+  <h1 class="center-title text-center h1">Центр трудоустройства</h1>
+
+  <div class="center-blocks">
+    <div class="center-tieser text-white">
+      <div class="center-head">
+        <h2 class="center-title h5">АНОНС</h2>
+
+        <div class="center-date body-2 xl-body-3">20 марта в 12:00</div>
+      </div>
+
+      <ul class="center-list body-1 xl-body-2 font-regular">
+        <li>
+          ✶ Не допустите, чтобы ваши навыки остались незамеченными! 
+        </li>
+        <li>
+          ✶ В формате online-тренинга разберем все аспекты, на которые эйчары обращают внимание. 
+        </li>
+        <li>
+          ✶ Ждем вас 20 марта в 12:00
+        </li>
+      </ul>
+
+      <button class="center-btn btn">Зарегистрироваться</button>
+    </div>
+
+    <div class="center-vacancies">
+      <div class="center-head">
+        <h2 class="center-title h5">ВАКАНСИИ:</h2>
+
+        <a href="#" class="center-link btn xl-small btn-white">Больше вакансий</a>
+      </div>
+
+      <ul class="center-vaclist body-2 xl-body-2 font-regular">
+        <li class="center-vacitem">
+          <div class="center-vacdate">01.03.26</div>
+          <div class="center-company">МТС</div>
+          <div class="center-vactext  ">опубликовал <a href="#">летнюю программу стажировки</a> </div>
+        </li>
+        <li class="center-vacitem">
+          <div class="center-vacdate">25.02.26</div>
+          <div class="center-company">Лукойл</div>
+          <div class="center-vactext  ">приглашает на работу в отдел аналитики данных</div>
+        </li>
+        <li class="center-vacitem">
+          <div class="center-vacdate">20.02.26</div>
+          <div class="center-company">МТС</div>
+          <div class="center-vactext  ">приглашает на работу начинающих специалистов в отдел аналитики данных</div>
+        </li>
+        <li class="center-vacitem">
+          <div class="center-vacdate">19.02.26</div>
+          <div class="center-company">{Компания}</div>
+          <div class="center-vactext  ">приглашает на работу в отдел аналитики данных </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="calendar container pt-80 pb-80">
+  <h2 class="calendar-title h2 text-center">Календарь</h2>
+
+  <div class="calendar-table">
+    <div class="calendar-head body-3 xl-hidden">
+      <div class="calendar-th">ДАТА</div>
+      <div class="calendar-th">ТЕМА</div>
+      <div class="calendar-th">ФОРМАТ</div>
+    </div>
+
+    @loop('./partials/calendar-item.html', [
+    {
+    date: '20.03.26',
+    title: 'Как сделать идеальное резюме?',
+    format: 'Online'
+    },
+    {
+    date: '10.05.26',
+    title: 'Как язык жестов выдает уверенность кандидата на собеседовании.',
+    format: 'Online'
+    },
+    {
+    date: '12.07.26',
+    title: 'Психология цвета в интерфейсах: как повысить конверсию.',
+    format: 'offline'
+    },
+    {
+    date: '15.08.26',
+    title: 'Методы эффективного управления удаленной командой.',
+    format: 'Online'
+    },
+    {
+    date: '20.09.26',
+    title: 'Создание адаптивного дизайна: практические советы.',
+    format: 'Online'
+    },
+    {
+    date: '05.10.26',
+    title: 'Тренды UX в 2026 году: что ожидать и как подготовиться.',
+    format: 'Online'
+    },
+    ])
+
+    <div class="pagination calendar-pagination">
+      <a href="#" class="pagination-prev" aria-label="pagination previos"></a>
+      <a href="#" class="pagination-button active">1</a>
+      <a href="#" class="pagination-button">2</a>
+      <a href="#" class="pagination-button">3</a>
+      <a href="#" class="pagination-button">4</a>
+      <a href="#" class="pagination-button">5</a>
+      <span class="pagination-button">...</span>
+      <a href="#" class="pagination-button">100</a>
+      <a href="#" class="pagination-next" aria-label="pagination previos"></a>
+    </div>
+  </div>
+</section>
+
+{{> articles }}
+
+<div class="pt-40"></div>
+
 {{> gallery }}
 {{> contacts}}

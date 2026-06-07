@@ -27,12 +27,7 @@
 }
 
 .out {
-  transform: translate3d(0, calc(-100% - 1rem), 0);
 
-  @include breakpoint($xl-bp) {
-    transform: none;
-    will-change: auto;
-  }
 }
 
 .header-logo {

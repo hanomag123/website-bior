@@ -1,0 +1,115 @@
+<section class="hero parents blog">
+  <div class="hero-head pt-80 container relative text-white">
+    <h1 class="hero-title h1 text-center relative">Статьи</h1>
+
+    <div class="hero-bg img-cover">
+      <picture>
+        <source srcset="./assets/images/direction/bg-mobile.jpg" media="(max-width:500px)">
+        <img src="./assets/images/direction/bg.jpg" alt="">
+      </picture>
+    </div>
+  </div>
+
+  <div class="hero-content container">
+    <div class="blog-list">
+      @loop('./partials/articles-item.html', [
+      {
+      img: '1.png',
+      title: 'Востребованные специальности в 2026 году.',
+      class: 'rounded',
+      },
+      {
+      img: '2.png',
+      title: 'Зачем вузы готовят столько юристов? ',
+      class: '',
+      },
+      {
+      img: '2.png',
+      class: '',
+      title: 'Как выбрать онлайн-курс: форматы, критерии, вопросы менеджеру'
+      },
+      {
+      img: '2.png',
+      class: '',
+      title: 'Как учиться во взрослом возрасте, почему это важно и не поздно'
+      },
+      {
+      img: '2.png',
+      class: '',
+      title: 'Как выбрать онлайн-курс: форматы, критерии, вопросы менеджеру'
+      },
+      {
+      img: '2.png',
+      title: 'Зачем вузы готовят столько юристов? ',
+      class: '',
+      },
+      {
+      img: '2.png',
+      title: 'Зачем вузы готовят столько юристов? ',
+      class: '',
+      },
+      {
+      img: '2.png',
+      title: 'Зачем вузы готовят столько юристов? ',
+      class: '',
+      },
+      {
+      img: '2.png',
+      title: 'Зачем вузы готовят столько юристов? ',
+      class: '',
+      },
+      {
+      img: '2.png',
+      title: 'Зачем вузы готовят столько юристов? ',
+      class: '',
+      },
+      {
+      img: '2.png',
+      title: 'Зачем вузы готовят столько юристов? ',
+      class: '',
+      },
+      {
+      img: '1.png',
+      title: 'Востребованные специальности в 2026 году.',
+      class: 'rounded',
+      },
+      ])
+    </div>
+
+    <div class="pagination calendar-pagination">
+      <a href="#" class="pagination-prev" aria-label="pagination previos"></a>
+      <a href="#" class="pagination-button active">1</a>
+      <a href="#" class="pagination-button">2</a>
+      <a href="#" class="pagination-button">3</a>
+      <a href="#" class="pagination-button">4</a>
+      <a href="#" class="pagination-button">5</a>
+      <span class="pagination-button">...</span>
+      <a href="#" class="pagination-button">100</a>
+      <a href="#" class="pagination-next" aria-label="pagination previos"></a>
+    </div>
+  </div>
+</section>
+
+<section class="mwhat --blog container">
+  <hr class="relative xl-hidden">
+
+  <div class="mwhat-columns mt-48 relative">
+    <a href="https://www.youtube.com/watch?v=927eacQO-T8" data-fancybox class="mwhat-video">
+      <div class="img-cover">
+        <picture>
+          <source srcset="./assets/images/mwhat/preview-mobile.jpg" media="(max-width:500px)">
+          <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/mwhat/preview.jpg" class="lazyload" alt="preview">
+        </picture>
+      </div>
+    </a>
+
+    <div class="mwhat-text">
+      <h2 class="h4 text-center mwhat-subtitle">10.12.25 УМНЕЙ обновил видеоролик, <br class="xl-hidden">посвященный личной студии студента </h2>
+    </div>
+  </div>
+</section>
+
+<div class="pt-40"></div>
+
+{{> gallery}}
+{{> contacts}}

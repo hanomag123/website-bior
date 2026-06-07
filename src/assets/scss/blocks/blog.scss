@@ -1,0 +1,22 @@
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4rem;
+
+  @include breakpoint($xl-bp) {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  .main-h4 {
+    margin-bottom: 3rem;
+  }
+
+  .articles-img {
+    height: 20.5rem;
+    @include breakpoint($xl-bp) {
+      height: 19.7rem;
+    }
+  }
+}

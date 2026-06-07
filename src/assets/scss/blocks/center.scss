@@ -1,0 +1,421 @@
+.center {
+  background: var(--background-back);
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  margin-bottom: 6.9rem;
+  position: relative;
+
+  @include breakpoint($xl-bp) {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  &::before {
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg width='1920' height='69' viewBox='0 0 1920 69' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.62582e-05 0H1920L1920 46.787C1920 46.787 1343.73 69 960 69C576.273 69 0 46.787 0 46.787L4.62582e-05 0Z' fill='%23F1F3F6' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+    width: 100%;
+    height: 6.9rem;
+
+    @include breakpoint($xl-bp) {
+      background-image: url("data:image/svg+xml,%3Csvg width='374' height='69' viewBox='0 0 374 69' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.0348e-06 0H375L375 46.787C375 46.787 262.447 69 187.5 69C112.553 69 0 46.787 0 46.787L9.0348e-06 0Z' fill='%23F1F3F6' /%3E%3C/svg%3E");
+    }
+  }
+}
+
+.center-title {}
+
+.center-blocks {
+  margin-top: 10rem;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 4rem;
+
+  @include breakpoint($xl-bp) {
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.center-tieser {
+  border-radius: 1.6rem;
+  padding: 2rem 2.4rem;
+  background: var(--text--icon-secondary);
+
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint($xl-bp) {
+    padding: 2rem 1.6rem;
+  }
+
+}
+
+.center-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.center-date {
+  background: var(--text--icon-hover-primary);
+  border-radius: 9.9rem;
+  padding: 0.8rem 1.2rem;
+  color: var(--text--icon-primary);
+}
+
+.center-list {
+  margin-top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 4.6rem;
+  max-width: 49.2rem;
+}
+
+.center-btn {
+  margin-top: auto;
+  width: fit-content;
+
+  @include breakpoint($xl-bp) {
+    width: 100%;
+  }
+}
+
+.center-vacancies {
+  border-radius: 1.6rem;
+  padding: 2rem 2.4rem;
+  background: var(--text--icon-hover-primary);
+
+  @include breakpoint($xl-bp) {
+    padding: 2rem 1.6rem;
+  }
+}
+
+.center-link {
+  @include breakpoint($xl-bp) {
+    width: fit-content;
+  }
+}
+
+.center-vaclist {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin-top: 2.4rem;
+}
+
+.center-vacitem {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.center-vacdate {}
+
+.center-company {
+  background: var(--background-back);
+  color: var(--text--icon-secondary);
+  padding: 0.4rem 1.2rem;
+  border-radius: 9.9rem;
+}
+
+.center-vactext {
+  flex-grow: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  max-width: 44rem;
+  width: 100%;
+
+  a {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    transition: text-decoration-color var(--time);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        text-decoration-color: transparent;
+      }
+    }
+  }
+}
+
+.calendar {}
+
+.calendar-title {}
+
+.calendar-table {
+  max-width: 105.2rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-top: 3.2rem;
+}
+
+.calendar-row,
+.calendar-head {
+  display: grid;
+  grid-template-columns: 16rem 1fr 16rem 17.8rem;
+  align-items: center;
+
+  border-bottom: 1px solid var(--border-inverse);
+  padding: 1.6rem 0rem;
+}
+
+.calendar-head {
+  opacity: 0.6;
+
+  @include breakpoint($xl-bp) {
+    display: none;
+  }
+}
+
+.calendar-th {}
+
+.calendar-row {
+  @include breakpoint($xl-bp) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.6rem;
+  }
+}
+
+.calendar-td {
+  @include breakpoint($xl-bp) {
+    font-weight: 500;
+
+    display: flex;
+    gap: 1.2rem;
+
+    &::before {
+      content: attr(data-label);
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 129%;
+      color: var(--text--icon-inverse-primary);
+      opacity: 0.6;
+      min-width: 6.1rem;
+    }
+  }
+
+  &.title {
+    max-width: 48.2rem;
+  }
+}
+
+.calendar-button {}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+
+  &.calendar-pagination {
+    margin-top: 3.2rem;
+  }
+}
+
+.pagination-button {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 0.8rem;
+  padding: 0.4rem;
+
+
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 143%;
+  text-align: center;
+  flex: 0 0 auto;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition: color var(--time);
+
+  &.active {
+    color: var(--text--icon-hover-primary);
+    background: var(--text--icon-secondary);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: var(--text--icon-hover-secondary);
+    }
+  }
+}
+
+
+.pagination-prev,
+.pagination-next {
+  width: 3.2rem;
+  height: 3.2rem;
+
+  position: relative;
+  margin-left: 1rem;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      &::before {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  &::before {
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.6 6L0 1.4L1.4 0L7.4 6L1.4 12L0 10.6L4.6 6Z' fill='%23172339' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0.8rem 1.2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity var(--time);
+  }
+}
+
+.pagination-prev {
+  margin-right: 1rem;
+
+  &::before {
+    transform: scale(-1, 1);
+  }
+}
+
+.articles {
+  background: var(--background-back);
+
+  @include breakpoint($xl-bp) {
+    padding-bottom: 7.6rem;
+    padding-top: 2rem;
+  }
+}
+
+.articles-title {
+  @include breakpoint($xl-bp) {
+    text-align: left;
+  }
+}
+
+.articles-wrap {
+  position: relative;
+
+  .swiper-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    z-index: 2;
+
+    @include breakpoint($xl-bp) {
+      display: none;
+    }
+
+    &.swiper-button-disabled {
+      opacity: 0;
+    }
+
+    &.prev {
+      left: 0;
+    }
+
+    &.next {
+      right: 0;
+    }
+  }
+
+  .swiper-pagination {
+    bottom: auto;
+    top: calc(100% + 3.2rem);
+    display: none;
+
+    @include breakpoint($xl-bp) {
+      display: block;
+    }
+  }
+}
+
+.articles-swiper {
+  max-width: 144rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3.2rem;
+
+  @include breakpoint($xl-bp) {
+    width: calc(100% + 3.2rem);
+    padding-left: 1.6rem;
+    left: -1.6rem;
+    position: relative;
+  }
+
+  .swiper-slide {
+    width: 33.5rem;
+    margin-right: 3.2rem;
+    height: auto;
+
+    @include breakpoint($xl-bp) {
+      width: 30rem;
+    }
+  }
+}
+
+.articles-subtitle {
+  margin-top: 3rem;
+  margin-bottom: 2.4rem;
+}
+
+.articles-img {
+  box-shadow: 0 4px 13px 0 rgba(231, 233, 236, 0.3);
+  width: 100%;
+  height: 18.3rem;
+
+  @include breakpoint($sm-bp) {
+    width: 100%;
+    height: 17.1rem;
+  }
+
+  .rounded & {
+    border-radius: 2rem;
+  }
+}
+
+.articles-item {
+  border: 1px solid var(--border-inverse);
+  border-radius: 2.4rem;
+  padding: 2.4rem;
+
+  display: flex;
+  flex-direction: column;
+  background: var(--background-surface-light);
+
+  @include breakpoint($xl-bp) {
+    padding: 1.6rem;
+  }
+}
+
+.pt-40 {
+  padding-top: 4rem;
+
+  @include breakpoint($xl-bp) {
+    padding-top: 3.2rem;
+  }
+}

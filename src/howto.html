@@ -1,6 +1,42 @@
-<section class="howto pt-80">
-  <h1 class="howto-title text-center h1">Как учиться?</h1>
+<section class="howto pt-80 relative">
+  <div class="howto-bg img-cover">
+    <picture>
+      <source srcset="./assets/images/howto/bg-mobile.webp" media="(max-width:500px)">
+      <img src="./assets/images/howto/bg.png" fetchpriority="high" alt="bg">
+    </picture>
+  </div>
+  <h1 class="howto-title text-center h1 relative">Как учиться?</h1>
   {{> howto-inner }}
 </section>
+
+@include('./partials/documents.html', {
+withbg: true
+})
+
+<section class="youcan container relative pb-80">
+  <h2 class="youcan-subtitle h2 text-center mt-80">Теперь ты можешь учиться удобнее, быстрее и УМНЕЙ!</h2>
+
+  <ul class="education-list mt-48 --youcan">
+    <li class="education-item --6">
+      <h3 class="education-subtitle h4">ПОДАЙ <br>ДОКУМЕНТЫ</h3>
+
+      <button class="youcan-btn btn btn-blue">Оставить заявку</button>
+    </li>
+    <li class="education-item --7">
+      <h3 class="education-subtitle h4">ЗАКЛЮЧИ <br>ДОГОВОР</h3>
+    </li>
+    <li class="education-item --8 bg-blue">
+      <h3 class="education-subtitle h4">ПОЛУЧИ ЛОГИН И ПАРОЛЬ</h4>
+        <p class="education-desc body-1 font-regular mt-16">
+          К своей «Личной Студии» на сайте
+        </p>
+
+        <div class="education-bg img-contain">
+          <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/logo/logo-mobile.svg" class="lazyload" alt="logo">
+        </div>
+    </li>
+  </ul>
+</section>
+
 {{> gallery }}
 {{> contacts}}

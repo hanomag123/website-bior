@@ -1,0 +1,135 @@
+.article-inner {
+  padding: 2rem 1.6rem;
+}
+
+.article-excerpt {
+  max-width: 124.4rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.article-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2rem;
+  margin-top: 3.2rem;
+}
+
+.article-date {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}
+
+.article-time {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}
+
+.article-wysiwyg {
+  max-width: 128.4rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  &>* {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  h2 {
+    margin-top: 7.2rem;
+    margin-bottom: 1.6rem;
+
+    font-weight: 600;
+    font-size: 2.8rem;
+    line-height: 121%;
+    text-align: center;
+    font-family: var(--font-family);
+
+    @include breakpoint($xl-bp) {
+      margin-top: 3.2rem;
+      margin-bottom: 1.6rem;
+
+      font-size: 2.2rem;
+      line-height: 118%;
+    }
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: 2.6rem;
+    line-height: 123%;
+
+    margin-top: 7.2rem;
+    margin-bottom: 2.4rem;
+    font-family: var(--font-family);
+
+    @include breakpoint($xl-bp) {
+      margin-top: 3.2rem;
+      margin-bottom: 1.6rem;
+
+      font-size: 2rem;
+      line-height: 120%;
+    }
+  }
+
+  p {
+    margin-bottom: 1.6rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    li {
+      position: relative;
+      padding-left: 2.7rem;
+
+      &::before {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='10' fill='%2384CAE8' fill-opacity='0.4' /%3E%3Ccircle cx='10' cy='10' r='5' fill='%2384CAE8' /%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: 0.2rem;
+        left: 0;
+      }
+    }
+  }
+
+  blockquote {
+    border-left: 5px solid var(--text--icon-hover-secondary);
+    padding: 0rem 2rem;
+
+    margin-top: 7.2rem;
+    margin-bottom: 7.2rem;
+
+    @include breakpoint($xl-bp) {
+      margin-bottom: 3.2rem;
+      margin-top: 3.2rem;
+    }
+  }
+}
