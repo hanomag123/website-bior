@@ -11,6 +11,13 @@
       padding-bottom: 13rem;
     }
   }
+
+  .faq & {
+    @include breakpoint($xl-bp) {
+      padding-top: 4rem;
+      padding-bottom: 13rem;
+    }
+  }
 }
 
 .hero-desc {
@@ -60,9 +67,26 @@
       border-radius: 4rem 4rem 0 0;
       margin-bottom: 0;
       padding-bottom: 2rem;
+
       &::before {
         content: normal;
       }
+    }
+  }
+
+  .faq & {
+    margin-bottom: 0;
+
+    @include breakpoint($xl-bp) {
+      padding-top: 1.6rem;
+      border-radius: 3.2rem 3.2rem 0 0;
+      margin-bottom: 0;
+      padding-bottom: 2rem;
+    }
+
+    &::before {
+      content: normal;
+
     }
   }
 
@@ -76,6 +100,7 @@
 
   .--article & {
     margin-bottom: 0;
+
     &::before {
       content: normal;
     }
@@ -280,6 +305,7 @@
 .platform {
   &.parents {
     padding-bottom: 4rem;
+
     @include breakpoint($xl-bp) {
       .platform-title {
         margin-top: 4rem;

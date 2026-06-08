@@ -657,4 +657,13 @@ document.addEventListener("DOMContentLoaded", () => {
       el.placeholder = el.placeholder.slice(0, 12) + "...";
     });
   }
+
+  const summaries2 = document.querySelectorAll('.faq-summary')
+  if (summaries2.length) {
+    summaries2.forEach(el => {
+      el.addEventListener('click', function () {
+        this.parentElement.classList.toggle('opened')
+      })
+    })
+  }
 });

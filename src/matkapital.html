@@ -1,17 +1,29 @@
 <section class="matkapital ">
-  <div class="matkapital-hero container">
-    <h1 class="matkapital-title">Материнский капитал <br>
+  <div class="matkapital-hero container relative">
+
+    <div class="matkapital-bg img-cover">
+      <picture>
+        <source srcset="./assets/images/matkapital/bg-mobile.jpg" media="(max-width:500px)">
+        <img src="./assets/images/matkapital/bg.jpg" fetchpriority="high" alt="bg">
+      </picture>
+    </div>
+
+    <h1 class="matkapital-title relative text-white">Материнский капитал <br>
       на образование детей</h1>
+
+    <div class="matkapital-img img-contain relative">
+      <img src="./assets/images/matkapital/main.svg" alt="main">
+    </div>
   </div>
 
-  <div class="matkapital-container container">
-    <div class="matkapital-wysiwyg">
+  <div class="matkapital-container pt-80 container">
+    <div class="matkapital-wysiwyg h6 xl-h6 font-regular ">
       <p>
         Получателем материнского капитала является гражданин РФ. Лица, получившие государственный сертификат на материнский (семейный) капитал, могут распоряжаться средствами материнского (семейного) капитала в полном объёме либо по частям путём направления этих средств.
       </p>
       <p><b>На дату начала обучения ребёнок должен быть не старше 25 лет.</b></p>
 
-      <blockquote>Средства материнского (семейного) капитала могут быть направлены на оплату предоставляемых образовательными организациями платных образовательных услуг по любой форме обучения (очной, заочной, очно-заочной).</blockquote>
+      <blockquote>Средства материнского (семейного) капитала могут быть направлены на оплату предоставляемых <br>образовательными организациями платных образовательных услуг по любой форме обучения (очной, заочной, <br class="xl-hidden">очно-заочной).</blockquote>
 
       <h2>При оплате обучения средствами материнского капитала необходимо учесть следующие моменты:</h2>
 
@@ -37,9 +49,13 @@
       </ol>
     </div>
 
-    <a href="#" class="matkapital-btn btn btn-blue xl-small">Выбрать программу 
-      <svg><use xlink:href='./assets/images/sprite.svg#arrow'></use></svg>
-    </a>
+    <div class="matkapital-buttons">
+      <a href="#" class="matkapital-btn btn btn-blue xl-small">Выбрать программу
+        <svg>
+          <use xlink:href='./assets/images/sprite.svg#arrow'></use>
+        </svg>
+      </a>
+    </div>
 
     {{> blocks }}
   </div>

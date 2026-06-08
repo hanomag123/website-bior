@@ -1,0 +1,81 @@
+<div class="special-swiper container">
+  <div class="special-bg img-cover">
+    <img src="./assets/images/pokazplace.jpg" data-src="./assets/images/special/bg.jpg" class="lazyload" alt="special">
+  </div>
+
+  <div class="main-swiperwrap mt-20 relative">
+    <div class="swiper main-swiper">
+      <div class="swiper-wrapper">
+        @loop('./partials/main-item.html', [
+        {
+        title: "Вопросы <br>и ответы",
+        link: "faq.html",
+        bg: "1.svg",
+        },
+        {
+        title: "Оплата материнским капиталом",
+        link: "article.html",
+        bg: "2.svg",
+        },
+        {
+        title: "Образовательный <br>кредит",
+        link: "article.html",
+        bg: "3.svg",
+        },
+        {
+        title: "Как проверить лицензию и аккредитацию",
+        link: "article.html",
+        bg: "4.svg",
+        },
+        {
+        title: "Отсрочка от армии",
+        link: "article.html",
+        bg: "5.svg",
+        },
+        {
+        title: "Как вернуть подоходный налог 13%",
+        link: "article.html",
+        bg: "5.png",
+        },
+        {
+        title: "Как проверить - Как учится ребенок?",
+        link: "article.html",
+        bg: "7.svg",
+        },
+        {
+        title: "Как помочь организовать место для учебы",
+        link: "article.html",
+        bg: "8.svg",
+        },
+        {
+        title: "Для кого подходит дистанционное обучение?",
+        link: "article.html",
+        bg: "1.svg",
+        },
+        {
+        title: "Где посмотреть учебный план?",
+        link: "article.html",
+        bg: "7.svg",
+        },
+        ])
+      </div>
+    </div>
+
+    <div class="swiper-pagination"></div>
+
+    <button class="swiper-arrow next">
+      <svg>
+        <use xlink:href='./assets/images/sprite.svg#arrow'></use>
+      </svg>
+    </button>
+
+    <button class="swiper-arrow prev">
+      <svg>
+        <use xlink:href='./assets/images/sprite.svg#arrow'></use>
+      </svg>
+    </button>
+  </div>
+</div>
+
+{{> gallery}}
+{{> contacts}}

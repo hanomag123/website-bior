@@ -185,10 +185,9 @@ h6,
 }
 
 .xl-h6 {
-  font-family: var(--font-family);
-  font-weight: 600;
-
   @include breakpoint($xl-bp) {
+    font-family: var(--font-family);
+    font-weight: 600;
     font-size: 1.8rem;
     line-height: 122%;
   }
