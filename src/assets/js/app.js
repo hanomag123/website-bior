@@ -25,13 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
       this.overlay.hidden = true;
       this._init();
 
-      this.buttons = this.menu.querySelectorAll('a, button')
+      this.buttons = this.menu.querySelectorAll("a, button");
       if (this.buttons.length) {
-        this.buttons.forEach(el => {
-          el.addEventListener('click', () => {
-            this.closeMenu()
-          })
-        })
+        this.buttons.forEach((el) => {
+          el.addEventListener("click", () => {
+            this.closeMenu();
+          });
+        });
       }
     }
 
@@ -597,14 +597,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    const articles = document.querySelectorAll(".articles-wrap");
+  const articles = document.querySelectorAll(".articles-wrap");
   if (articles.length) {
     articles.forEach((el) => {
       const nextEl = el.querySelector(".next");
       const prevEl = el.querySelector(".prev");
       const pagination = el.querySelector(".swiper-pagination");
       const swiper = el.querySelector(".swiper");
-      const slides = el.querySelectorAll('.swiper-slide')
+      const slides = el.querySelectorAll(".swiper-slide");
       if (!swiper) {
         return;
       }
@@ -658,12 +658,98 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const summaries2 = document.querySelectorAll('.faq-summary')
+  const summaries2 = document.querySelectorAll(".faq-summary");
   if (summaries2.length) {
-    summaries2.forEach(el => {
-      el.addEventListener('click', function () {
-        this.parentElement.classList.toggle('opened')
-      })
-    })
+    summaries2.forEach((el) => {
+      el.addEventListener("click", function () {
+        this.parentElement.classList.toggle("opened");
+      });
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    const closest = event.target.closest("[data-modal]");
+    if (closest) {
+      const modal = document.getElementById(closest.dataset.modal);
+      if (modal) {
+        if (closest.dataset.modal === "calendar-modal") {
+          const google = closest.dataset.google;
+          const yandex = closest.dataset.yandex;
+          const outlook = closest.dataset.outlook;
+
+          const title = closest.dataset.title;
+          const date = closest.dataset.date;
+
+          if (google) {
+            const modalgoogle = document.getElementById("google-link");
+            if (modalgoogle) {
+              modalgoogle.href = google;
+            }
+          }
+
+          if (yandex) {
+            const modalyandex = document.getElementById("yandex-link");
+            if (modalyandex) {
+              modalyandex.href = yandex;
+            }
+          }
+
+          if (outlook) {
+            const modaloutlook = document.getElementById("outlook-link");
+            if (modaloutlook) {
+              modaloutlook.href = outlook;
+            }
+          }
+
+          if (title) {
+            const titleblock = document.getElementById("modal-title");
+            if (titleblock) {
+              titleblock.innerHTML = title;
+            }
+          }
+
+          if (date) {
+            const dateblock = document.getElementById("eventData");
+            if (dateblock) {
+              dateblock.value = date;
+            }
+          }
+        }
+
+        modal.openModal();
+      }
+    }
+  });
+
+  const modals = document.querySelectorAll(".modal");
+
+  if (modals.length) {
+    modals.forEach((el) => {
+      el.openModal = function () {
+        document.documentElement.classList.add("modal-opened");
+        el.classList.add("open");
+      };
+      el.closeModal = function () {
+        document.documentElement.classList.remove("modal-opened");
+        el.classList.remove("open");
+      };
+      el.addEventListener("click", function (event) {
+        if (event.target.classList.contains("modal")) {
+          el.closeModal();
+        }
+      });
+    });
+  }
+
+  const closebtns = document.querySelectorAll("[data-close-modal]");
+  if (closebtns.length) {
+    closebtns.forEach((el) => {
+      el.addEventListener("click", function () {
+        const modal = this.closest(".modal");
+        if (modal && "closeModal" in modal) {
+          modal.closeModal();
+        }
+      });
+    });
   }
 });

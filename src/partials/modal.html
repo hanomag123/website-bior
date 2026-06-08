@@ -1,0 +1,75 @@
+<!-- Modal -->
+<div class="modal" id="leed-modal" data-thank="feedback2">
+  <div class="modal-block max-w-860">
+
+    <button class="modal-close" aria-label="close-modal" data-close-modal>
+      <svg viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4.94922" y="6.36388" width="2" height="16" transform="rotate(-45 4.94922 6.36388)" fill="currentColor" />
+        <rect x="6.36328" y="17.6776" width="2" height="16" transform="rotate(-135 6.36328 17.6776)" fill="currentColor" />
+      </svg>
+    </button>
+
+    <div class="modal-title text-left">Связаться с нами</div>
+
+    <div class="modal-description --1 mb-40">
+      Оставьте контакты, и мы поможем вам решить возникшие вопросы
+    </div>
+
+    <form action="#" method="post">
+      <div class="modal-inputs">
+
+        <label class="modal-labelwrap">
+          <span class="modal-placeholder">Имя</span>
+          <input type="text" name="name" class="input modal-input" placeholder="Ваше имя" required>
+        </label>
+
+        <label class="modal-labelwrap">
+          <span class="modal-placeholder">Фамилия</span>
+          <input type="text" name="surname" class="input modal-input" placeholder="Ваша фамилия" required>
+        </label>
+
+        <label class="modal-labelwrap">
+          <span class="modal-placeholder">Email</span>
+          <input type="email" name="email_to_send_calendar" class="input modal-input" placeholder="example@softline.ru" required>
+        </label>
+
+        <label class="modal-labelwrap">
+          <span class="modal-placeholder">Телефон</span>
+          <input type="tel" name="tel" class="input modal-input" pattern="\+7 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}" placeholder="+7" required>
+        </label>
+
+        <label class="modal-labelwrap col-span-2">
+          <span class="modal-placeholder">Компания</span>
+          <input type="text" name="tel" class="input modal-input" placeholder="Название компании" required>
+        </label>
+
+        <label class="modal-labelwrap col-span-2">
+          <span class="modal-placeholder">Сообщение</span>
+          <textarea type="text" name="tel" class="input modal-input" placeholder="Текст сообщения" required></textarea>
+        </label>
+      </div>
+
+
+      <label class="modal-label items-center">
+        <div class="checkbox border-grey">
+          <input type="checkbox" required checked>
+          <div class="checkbox-box"></div>
+        </div>
+        <span>
+          Я ознакомлен с <a href="politics.html">политикой конфиденциальности</a> и даю <a href="politics.html">согласие на обработку персональных данных</a>
+        </span>
+      </label>
+
+      <div id="captcha-container1"></div>
+
+      <button class="modal-btn --3 btn">
+        Отправить
+        <svg class="icon-18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <use href='#plus-icon'></use>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal -->

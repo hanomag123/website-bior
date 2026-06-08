@@ -1,0 +1,362 @@
+.modal-opened {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 20;
+
+  display: none;
+
+  animation: fadeEffect var(--time);
+
+  @include breakpoint($xl-bp) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  @include breakpoint($sm-bp) {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  &.open {
+    display: flex;
+  }
+}
+
+.modal-block {
+  border-radius: 4rem;
+  background-color: var(--white);
+  max-width: 58rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  position: relative;
+
+  max-height: 100%;
+  overflow: auto;
+
+  @include breakpoint($xl-bp) {
+    max-width: 28rem;
+    padding: 2rem;
+    border-radius: 1.5rem;
+  }
+
+  &.max-w-640 {
+    max-width: 64rem;
+  }
+
+  &.max-w-860 {
+    max-width: 86rem;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 4rem;
+  right: 4rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(36, 33, 55, 0.4);
+
+  width: 3.6rem;
+  height: 3.6rem;
+  color: var(--grey);
+
+  padding: 0.5rem;
+
+  transition: border-color var(--time);
+
+  @include breakpoint($xl-bp) {
+    top: 2rem;
+    right: 2rem;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      border-color: var(--black);
+      color: var(--black);
+    }
+  }
+}
+
+.modal-title {
+  font-family: var(--second-family);
+  font-weight: 600;
+  font-size: 4rem;
+  line-height: 115%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--black);
+
+  @include breakpoint($xl-bp) {
+    font-size: 1.8rem;
+    line-height: 122%;
+  }
+
+  &.text-left {
+    text-align: left;
+  }
+}
+
+.modal-btn {
+  margin-top: 4rem;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include breakpoint($xl-bp) {
+    margin-top: 2rem;
+  }
+
+  &.--2 {
+    min-width: 36rem;
+    justify-content: space-between;
+
+    @include breakpoint($xl-bp) {
+      min-width: 100%;
+    }
+  }
+
+  &.--3 {
+    @include breakpoint($xl-bp) {
+      width: 100%;
+    }
+  }
+
+  &.loading {
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: inherit;
+      background-color: inherit;
+      z-index: 1;
+    }
+
+    &::after {
+      content: '';
+      width: 3rem;
+      height: 3rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 0.4rem solid var(--white);
+      animation:
+        l20-1 0.8s infinite linear alternate,
+        l20-2 1.6s infinite linear;
+    }
+  }
+}
+
+@keyframes l20-1 {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%)
+  }
+
+  12.5% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%)
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%)
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%)
+  }
+
+  62.5% {
+    clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%)
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%)
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%)
+  }
+}
+
+@keyframes l20-2 {
+  0% {
+    transform: translate(-50%, -50%) scaleY(1) rotate(0deg)
+  }
+
+  49.99% {
+    transform: translate(-50%, -50%) scaleY(1) rotate(135deg)
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scaleY(-1) rotate(0deg)
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scaleY(-1) rotate(-135deg)
+  }
+}
+
+.modal-label {
+  display: flex;
+  gap: 1.6rem;
+
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 143%;
+  letter-spacing: 0.001em;
+
+  cursor: pointer;
+
+  @include breakpoint($xl-bp) {
+    font-size: 1.2rem;
+    line-height: 150%;
+    gap: 1.5rem;
+    margin-top: 0;
+    font-weight: 400;
+  }
+
+  &.items-center {
+    align-items: center;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      .checkbox-box {
+        border-color: var(--black);
+      }
+    }
+  }
+
+  &+& {
+    margin-top: 2rem;
+  }
+
+  a {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1rem;
+    text-underline-offset: 0.3rem;
+    transition: text-decoration-color var(--time);
+    text-decoration-skip-ink: none;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        text-decoration-color: transparent;
+      }
+    }
+  }
+}
+
+.mb-40 {
+  margin-bottom: 4rem;
+}
+
+.mt-20 {
+  margin-top: 2rem;
+}
+
+.mt-40 {
+  margin-top: 4rem;
+}
+
+.modal-calendars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  margin-top: 2rem;
+
+  @include breakpoint($xl-bp) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+
+    font-family: var(--second-family);
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 133%;
+    letter-spacing: -0.01em;
+    color: #28355f;
+
+    border-radius: 1.5rem;
+    padding: 1.6rem 2rem 1.6rem 2.5rem;
+
+    border: 1px solid rgba($color: #28355F, $alpha: 0.15);
+    transition: border-color var(--time);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        border-color: var(--black);
+      }
+    }
+  }
+}
+
+.modal-calendaricon {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+}
+
+.modal-description {
+  &.--1 {
+    margin-top: 2.5rem;
+  }
+}
+
+.modal-labelwrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &.col-span-2 {
+    grid-column: 2 span;
+  }
+}
+
+.modal-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  column-gap: 4rem;
+  margin-bottom: 4rem;
+
+  @include breakpoint($xl-bp) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.modal-placeholder {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 143%;
+  color: #202636;
+}

@@ -12,6 +12,8 @@ html {
   box-sizing: border-box;
   font-size: calc(100vw / 1920 * 10);
 
+    scrollbar-gutter: stable;
+
   @include breakpoint($xl-bp) {
     font-size: calc(100vw / 768 * 10);
   }
@@ -48,6 +50,8 @@ body {
   --swiper-pagination-bullet-inactive-opacity: 1;
   --swiper-pagination-bullet-inactive-color: var(--border-inverse);
   --swiper-pagination-bullet-horizontal-gap: 1rem;
+
+  overflow-wrap: break-word;
 }
 
 main {
