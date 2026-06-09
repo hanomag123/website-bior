@@ -726,8 +726,9 @@
   }
 
   &.--info {
-    & > * {
+    &>* {
       border-color: #d4d2e2;
+
       &:after {
         content: normal;
       }
@@ -1227,6 +1228,18 @@
     padding: 1.6rem;
 
     order: 1;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      img {
+        transform: scale(1.05, 1.05);
+      }
+    }
+  }
+
+  img {
+    transition: transform var(--time);
   }
 
   &>* {
