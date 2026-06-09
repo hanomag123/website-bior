@@ -138,3 +138,19 @@
     gap: 0.8rem;
   }
 }
+
+.menu-phone li,
+.menu-lk li {
+  width: 100%;
+}
+.menu-phone a,
+.menu-lk a {
+  border-radius: 0.8rem;
+  padding: 1.6rem 3.2rem;
+  box-shadow: 0 4px 12px 0 rgba(146, 146, 146, 0.01);
+  background: var(--background-surface-light);
+  margin-top: 1.2rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}

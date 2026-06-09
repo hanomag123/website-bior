@@ -1,0 +1,68 @@
+.search {
+  padding-top: 14.4rem;
+  padding-bottom: 10.4rem;
+  margin-bottom: 4.9rem;
+  background: var(--background-back);
+  position: relative;
+
+  @include breakpoint($xl-bp) {
+    padding-top: 10rem;
+    padding-bottom: 4rem;
+    margin-bottom: 3.2rem;
+  }
+}
+
+.search-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 83.8rem;
+  @include breakpoint($xl-bp) {
+    max-height: 26rem;
+  }
+}
+
+.search-datalist {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  margin-top: 8rem;
+
+  @include breakpoint($xl-bp) {
+    margin-top: 5.2rem;
+    gap: 1.6rem;
+  }
+}
+
+.search-item {
+  border: 1px solid var(--border-inverse);
+  border-radius: 2.4rem;
+  background: var(--background-surface-light);
+  padding: 2.4rem;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  .main-link {
+    position: absolute;
+    bottom: 2.4rem;
+    right: 2.4rem;
+  }
+}
+
+.search-bottom {
+  color: var(--background-surface-blakc);
+
+
+  @include breakpoint($xl-bp) {
+    max-width: 22.3rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

@@ -247,6 +247,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       this.resets = search.querySelectorAll(".js-reset");
 
+      if (this.resets.length) {
+      this.resets.forEach((reset) => {
+        reset.addEventListener("click", (event) => {
+          event.preventDefault()
+          this.resetAll();
+        });
+      });
+      }
+
       this.dropdownHandle = function () {
         if (!event.target.closest(".dropdown-items, .dropdown-opened")) {
           this.closeDropdown();
@@ -260,10 +269,6 @@ document.addEventListener("DOMContentLoaded", () => {
       this.backbtn = search.querySelector(".js-search-back");
 
       if (!this.backbtn) {
-        return;
-      }
-
-      if (!this.resets) {
         return;
       }
 
@@ -332,12 +337,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      this.resets.forEach((reset) => {
-        reset.addEventListener("click", () => {
-          this.resetAll();
-        });
-      });
-
       this.initChips();
 
       this.initSearchInput();
@@ -347,9 +346,14 @@ document.addEventListener("DOMContentLoaded", () => {
       this.closeDatalist();
       this.wrap.classList.remove("is-fetched");
 
-      this.searchMobile.value = "";
-      this.searchInput.value = "";
+      if (this.searchMobile) {
+              this.searchMobile.value = "";
+      }
+      if (this.searchInput) {
+              this.searchInput.value = "";
+      }
 
+if (this.dropdown) {
       const checkboxes = this.dropdown.querySelectorAll(
         '.checkbox-label input[type="checkbox"]',
       );
@@ -360,6 +364,8 @@ document.addEventListener("DOMContentLoaded", () => {
           el.dispatchEvent(change);
         });
       }
+}
+
     }
 
     initChips() {
@@ -666,6 +672,58 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+    function addMask() {
+    [].forEach.call(
+      document.querySelectorAll('input[type="tel"]'),
+      function (input) {
+        let keyCode;
+        function mask(event) {
+          event.keyCode && (keyCode = event.keyCode);
+          let pos = this.selectionStart;
+          if (pos < 3) event.preventDefault();
+          let matrix = "+7 (___) ___-__-__",
+            i = 0,
+            def = matrix.replace(/\D/g, ""),
+            val = this.value.replace(/\D/g, ""),
+            new_value = matrix.replace(/[_\d]/g, function (a) {
+              return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
+            });
+          i = new_value.indexOf("_");
+          if (i != -1) {
+            i < 5 && (i = 3);
+            new_value = new_value.slice(0, i);
+          }
+          let reg = matrix
+            .substr(0, this.value.length)
+            .replace(/_+/g, function (a) {
+              return "\\d{1," + a.length + "}";
+            })
+            .replace(/[+()]/g, "\\$&");
+          reg = new RegExp("^" + reg + "$");
+          if (
+            !reg.test(this.value) ||
+            this.value.length < 5 ||
+            (keyCode > 47 && keyCode < 58)
+          )
+            this.value = new_value;
+          if (event.type == "blur" && this.value.length < 5) {
+            this.value = "";
+            this.classList.remove("havetext");
+          }
+        }
+
+        input.addEventListener("input", mask, false);
+        input.addEventListener("focus", mask, false);
+        input.addEventListener("blur", mask, false);
+        input.addEventListener("keydown", mask, false);
+        input.value
+          ? input.classList.add("havetext")
+          : input.classList.remove("havetext");
+      },
+    );
+  }
+  addMask();
 
   document.addEventListener("click", (event) => {
     const closest = event.target.closest("[data-modal]");

@@ -1,74 +1,50 @@
 <!-- Modal -->
-<div class="modal" id="leed-modal" data-thank="feedback2">
-  <div class="modal-block max-w-860">
+<div class="modal" id="leed-modal" data-thank="feedback">
+  <div class="modal-block max-w-860 with-logo">
 
     <button class="modal-close" aria-label="close-modal" data-close-modal>
-      <svg viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="4.94922" y="6.36388" width="2" height="16" transform="rotate(-45 4.94922 6.36388)" fill="currentColor" />
-        <rect x="6.36328" y="17.6776" width="2" height="16" transform="rotate(-135 6.36328 17.6776)" fill="currentColor" />
+      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.898438 16.8999L16.8984 0.899902" stroke="#2B2B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M16.8984 16.8999L0.898438 0.899902" stroke="#2B2B45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </button>
 
-    <div class="modal-title text-left">Связаться с нами</div>
-
-    <div class="modal-description --1 mb-40">
-      Оставьте контакты, и мы поможем вам решить возникшие вопросы
+    <div class="modal-logo img-contain">
+      <img src="./assets/images/modal/logo.svg" alt="logo">
     </div>
 
-    <form action="#" method="post">
-      <div class="modal-inputs">
+    <div class="modal-innerblock">
+      <div class="modal-title h2 text-center">Начните обучение сегодня</div>
 
-        <label class="modal-labelwrap">
-          <span class="modal-placeholder">Имя</span>
-          <input type="text" name="name" class="input modal-input" placeholder="Ваше имя" required>
-        </label>
-
-        <label class="modal-labelwrap">
-          <span class="modal-placeholder">Фамилия</span>
-          <input type="text" name="surname" class="input modal-input" placeholder="Ваша фамилия" required>
-        </label>
-
-        <label class="modal-labelwrap">
-          <span class="modal-placeholder">Email</span>
-          <input type="email" name="email_to_send_calendar" class="input modal-input" placeholder="example@softline.ru" required>
-        </label>
-
-        <label class="modal-labelwrap">
-          <span class="modal-placeholder">Телефон</span>
-          <input type="tel" name="tel" class="input modal-input" pattern="\+7 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}" placeholder="+7" required>
-        </label>
-
-        <label class="modal-labelwrap col-span-2">
-          <span class="modal-placeholder">Компания</span>
-          <input type="text" name="tel" class="input modal-input" placeholder="Название компании" required>
-        </label>
-
-        <label class="modal-labelwrap col-span-2">
-          <span class="modal-placeholder">Сообщение</span>
-          <textarea type="text" name="tel" class="input modal-input" placeholder="Текст сообщения" required></textarea>
-        </label>
+      <div class="modal-description body-1 font-regular xl-body-2 text-center">
+        Заполните форму, и наш специалист свяжется с вами
       </div>
 
+      <form action="#">
+        <div class="modal-inputs">
+          <input type="text" name="name" class="input modal-input" placeholder="Имя" required>
 
-      <label class="modal-label items-center">
-        <div class="checkbox border-grey">
-          <input type="checkbox" required checked>
-          <div class="checkbox-box"></div>
+          <input type="tel" name="surname" class="input modal-input" placeholder="+ 7 (__) ___-__-__" required>
         </div>
-        <span>
-          Я ознакомлен с <a href="politics.html">политикой конфиденциальности</a> и даю <a href="politics.html">согласие на обработку персональных данных</a>
-        </span>
-      </label>
 
-      <div id="captcha-container1"></div>
 
-      <button class="modal-btn --3 btn">
-        Отправить
-        <svg class="icon-18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <use href='#plus-icon'></use>
-        </svg>
-      </button>
-    </form>
+        <label class="modal-label  checkbox-wrap">
+          <div class="checkbox">
+            <input type="checkbox" required>
+            <div class="checkbox-box"></div>
+          </div>
+          <span>
+            Я согласен с обработкой моих персональных данных, согласно правилам <a href="privacy.html">политики конфиденциальности</a> данной платформы
+          </span>
+        </label>
+
+        <div id="captcha-container1"></div>
+
+        <button class="modal-btn btn btn-blue" type="submit">
+          Отправить заявку
+        </button>
+      </form>
+    </div>
   </div>
 </div>
 

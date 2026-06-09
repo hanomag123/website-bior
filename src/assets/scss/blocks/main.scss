@@ -29,6 +29,8 @@
     padding-left: 2rem;
     padding-bottom: 1.2rem;
     padding-top: 1.2rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     top: 0;
     gap: 0.6rem;
     width: 100%;
@@ -112,6 +114,12 @@
     svg {
       width: 2.4rem;
       height: 2.4rem;
+    }
+  }
+
+  &.xl-hidden {
+    @include breakpoint($xl-bp) {
+      display: none;
     }
   }
 
@@ -579,6 +587,15 @@
   }
 }
 
+.checkbox {
+  input {
+    position: absolute;
+    width: 2.4rem;
+    height: 2.4rem;
+    opacity: 0;
+  }
+}
+
 .checkbox-label {
   cursor: pointer;
 
@@ -602,6 +619,11 @@
   }
 
 
+
+}
+
+.checkbox-wrap,
+.checkbox-label {
   input {
     position: absolute;
     width: 2.4rem;
@@ -701,6 +723,15 @@
     padding-right: 1.6rem;
     width: calc(100% + 3.2rem);
     left: -1.6rem;
+  }
+
+  &.--info {
+    & > * {
+      border-color: #d4d2e2;
+      &:after {
+        content: normal;
+      }
+    }
   }
 
   &>* {
@@ -809,6 +840,12 @@
   &.desctop {
     @include breakpoint($xl-bp) {
       display: none;
+    }
+  }
+
+  .inline & {
+    @include breakpoint($xl-bp) {
+      display: flex;
     }
   }
 }
@@ -1669,6 +1706,9 @@
   right: 0;
   height: 100%;
 
+  img {
+    object-position: right;
+  }
 }
 
 .mdocuments-leftbg {

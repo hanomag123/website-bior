@@ -12,7 +12,8 @@ html {
   box-sizing: border-box;
   font-size: calc(100vw / 1920 * 10);
 
-    scrollbar-gutter: stable;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
 
   @include breakpoint($xl-bp) {
     font-size: calc(100vw / 768 * 10);
@@ -20,6 +21,11 @@ html {
 
   @include breakpoint($sm-bp) {
     font-size: calc(100vw / 375 * 10);
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px
   }
 }
 
@@ -210,7 +216,7 @@ h6,
 
   font-family: var(--font-family);
 
-  transition: background-color var(--time);
+  transition: background-color var(--time), border-color var(--time);
 
   display: inline-flex;
   align-items: center;
@@ -281,6 +287,19 @@ h6,
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: var(--text--icon-hover-secondary);
+      }
+    }
+  }
+
+  &.btn-lblue {
+    border: 1px solid var(--text--icon-hover-secondary);
+    background: var(--text--icon-hover-secondary);
+    color: var(--text--icon-hover-primary);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        border-color: var(--text--icon-secondary);
+        background-color: var(--text--icon-secondary);
       }
     }
   }
@@ -768,6 +787,32 @@ a.link-primary {
 
 .bg-grey {
   background: var(--background-back);
+}
+
+.input {
+  border-radius: 3rem;
+  padding: 2rem 3.2rem;
+  backdrop-filter: blur(30px);
+  box-shadow: 0 4px 6px 2px rgba(215, 220, 224, 0.5);
+  background: var(--1);
+  height: 6rem;
+
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 125%;
+
+  font-family: var(--font-family);
+
+  border: 0;
+
+  &::placeholder {
+    color: rgba(48, 48, 48, 0.6);
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none
+  }
 }
 
 /* Blocks */
